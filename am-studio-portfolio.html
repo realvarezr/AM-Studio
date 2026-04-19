@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — am Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --ink:    #0E0C0A;
+  --cream:  #F3EDE3;
+  --terra:  #C4521C;
+  --stone:  #8A837A;
+  --carbon: #2A2520;
+  --edge:   #E4DDD2;
+  --ff-d:   'Cormorant Garamond', Georgia, serif;
+  --ff-s:   'Outfit', sans-serif;
+  --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--ff-s);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 68px;
+  background: rgba(14,12,10,0.96);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-logo { display: flex; flex-direction: column; text-decoration: none; }
+.nl-am { font-family: var(--ff-s); font-weight: 800; font-size: 24px; color: var(--cream); letter-spacing: -0.04em; line-height: 0.9; }
+.nl-rule { width: 24px; height: 2px; background: var(--terra); margin: 4px 0 3px; }
+.nl-studio { font-family: var(--ff-s); font-weight: 200; font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--cream); opacity: 0.7; }
+
+.nav-back {
+  font-family: var(--ff-s); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--stone); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--terra); }
+
+/* ── HERO ─────────────────────────── */
+.hero {
+  min-height: 60vh;
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 120px 80px 80px;
+  position: relative; overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute; top: -100px; right: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,82,28,0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-bg {
+  position: absolute; bottom: -40px; right: 40px;
+  font-family: var(--ff-s); font-weight: 800;
+  font-size: clamp(120px, 16vw, 220px);
+  color: rgba(243,237,227,0.025);
+  letter-spacing: -0.06em; line-height: 1;
+  pointer-events: none; user-select: none;
+}
+
+.hero-eyebrow {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--terra); }
+
+.hero h1 {
+  font-family: var(--ff-d);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 300; font-style: italic;
+  color: var(--cream); line-height: 1;
+  margin-bottom: 8px;
+}
+
+.hero-bold {
+  font-family: var(--ff-s); font-weight: 800;
+  font-size: clamp(48px, 7vw, 96px);
+  color: var(--cream); letter-spacing: -0.04em;
+  line-height: 1; margin-bottom: 40px;
+}
+.hero-bold span { color: var(--terra); }
+
+.hero-meta {
+  display: flex; gap: 48px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 32px;
+}
+
+.hm-item { display: flex; flex-direction: column; gap: 4px; }
+.hm-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--stone); }
+.hm-value { font-size: 14px; font-weight: 500; color: var(--cream); opacity: 0.75; }
+
+/* ── FILTER BAR ──────────────────── */
+.filter-bar {
+  background: var(--carbon);
+  padding: 0 80px;
+  display: flex; align-items: center; gap: 4px;
+  position: sticky; top: 68px; z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.filter-btn {
+  font-family: var(--ff-s); font-size: 10px;
+  font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 18px 20px;
+  background: none; border: none; color: var(--stone);
+  cursor: pointer; transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.filter-btn:hover { color: var(--cream); }
+.filter-btn.active { color: var(--terra); border-bottom-color: var(--terra); }
+
+/* ── SECTION WRAPPER ─────────────── */
+.portfolio-section { padding: 80px; }
+
+.section-header {
+  display: flex; align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--edge);
+}
+
+.section-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--terra);
+}
+
+.section-count {
+  font-family: var(--ff-d); font-size: 13px;
+  font-style: italic; color: var(--stone);
+}
+
+/* ── PROJECT CARD — FEATURED ─────── */
+.project-featured {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; margin-bottom: 2px;
+  min-height: 560px;
+}
+
+.project-visual {
+  position: relative; overflow: hidden;
+  background: var(--carbon);
+  display: flex; align-items: center;
+  justify-content: center; padding: 40px;
+}
+
+/* Bonuskarte mockup */
+.mockup-card-scene {
+  position: relative; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 400px;
+}
+
+.mockup-card {
+  border-radius: 8px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.3);
+  position: absolute;
+  transition: transform 0.5s var(--ease);
+}
+
+.mc-front {
+  width: 75%; max-width: 320px;
+  transform: rotate(-4deg) translateX(-10%);
+  z-index: 2;
+}
+.mc-back {
+  width: 75%; max-width: 320px;
+  transform: rotate(4deg) translateX(10%) translateY(5%);
+  z-index: 1;
+}
+.project-visual:hover .mc-front { transform: rotate(-1deg) translateX(-12%) translateY(-8px); }
+.project-visual:hover .mc-back  { transform: rotate(6deg)  translateX(12%) translateY(10px); }
+
+/* Menu mockup */
+.mockup-menu {
+  width: 80%; max-width: 380px;
+  border-radius: 4px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  transform: perspective(800px) rotateY(-8deg) rotateX(2deg);
+  transition: transform 0.5s var(--ease);
+}
+.project-visual:hover .mockup-menu {
+  transform: perspective(800px) rotateY(-4deg) rotateX(1deg) translateY(-8px);
+}
+
+/* Poster mockup */
+.mockup-poster-wrap {
+  width: 65%; max-width: 280px;
+  position: relative;
+}
+.mockup-poster-shadow {
+  position: absolute; bottom: -20px; left: 10%; right: 10%;
+  height: 30px;
+  background: rgba(0,0,0,0.4);
+  filter: blur(16px);
+  border-radius: 50%;
+}
+.mockup-poster {
+  width: 100%; border-radius: 2px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  transform: perspective(600px) rotateY(6deg) rotateX(-1deg);
+  transition: transform 0.5s var(--ease);
+}
+.project-visual:hover .mockup-poster {
+  transform: perspective(600px) rotateY(2deg) rotateX(-0.5deg) translateY(-8px);
+}
+
+/* Illustration mockup */
+.mockup-illus-scene {
+  width: 100%; height: 100%; min-height: 400px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.mockup-illus-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #2A0A0A 0%, #4A0D0D 50%, #1A0808 100%);
+}
+.mockup-illus {
+  width: 70%; max-width: 300px;
+  position: relative; z-index: 2;
+  filter: drop-shadow(0 20px 48px rgba(0,0,0,0.6));
+  transition: transform 0.5s var(--ease);
+}
+.project-visual:hover .mockup-illus { transform: translateY(-12px) scale(1.03); }
+
+/* Recruiting mockup */
+.mockup-recruit {
+  width: 78%; max-width: 340px;
+  border-radius: 4px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  transform: perspective(800px) rotateY(6deg);
+  transition: transform 0.5s var(--ease);
+}
+.project-visual:hover .mockup-recruit {
+  transform: perspective(800px) rotateY(2deg) translateY(-8px);
+}
+
+/* Scene backgrounds */
+.scene-coffee {
+  background: linear-gradient(160deg, #2C1A0E 0%, #1A0F08 60%, #3D2410 100%);
+}
+.scene-green {
+  background: linear-gradient(160deg, #0D1A0A 0%, #172310 60%, #0A1208 100%);
+}
+.scene-blue {
+  background: linear-gradient(160deg, #0A1020 0%, #0D1528 60%, #080C18 100%);
+}
+.scene-red {
+  background: linear-gradient(160deg, #200808 0%, #2E0A0A 60%, #160606 100%);
+}
+.scene-dark {
+  background: linear-gradient(160deg, #141010 0%, #1A1414 60%, #0E0C0C 100%);
+}
+
+/* Scene decorations */
+.scene-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.scene-glow {
+  position: absolute;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,82,28,0.15), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── PROJECT INFO ─────────────────── */
+.project-info {
+  background: var(--ink); color: var(--cream);
+  padding: 56px 52px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-top {}
+
+.project-tags {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.ptag {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--stone); border-radius: 1px;
+}
+.ptag.accent { background: var(--terra); border-color: var(--terra); color: white; }
+
+.project-client {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: 12px;
+}
+
+.project-title {
+  font-family: var(--ff-d); font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 600; line-height: 1.05;
+  color: var(--cream); margin-bottom: 24px;
+}
+
+.project-desc {
+  font-size: 14px; font-weight: 300;
+  color: rgba(243,237,227,0.6); line-height: 1.8;
+  margin-bottom: 36px; max-width: 440px;
+}
+
+.project-challenge {
+  background: rgba(255,255,255,0.03);
+  border-left: 2px solid var(--terra);
+  padding: 20px 24px; margin-bottom: 36px;
+}
+.pc-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: 8px;
+}
+.pc-text {
+  font-family: var(--ff-d); font-style: italic;
+  font-size: 16px; font-weight: 300;
+  color: rgba(243,237,227,0.75); line-height: 1.6;
+}
+
+.project-specs {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; margin-bottom: 40px;
+}
+.spec-cell {
+  background: rgba(255,255,255,0.03);
+  padding: 16px 20px;
+}
+.spec-label {
+  font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--stone);
+  margin-bottom: 4px;
+}
+.spec-value {
+  font-size: 13px; font-weight: 500; color: var(--cream);
+  opacity: 0.8;
+}
+
+.project-bottom {}
+
+.project-divider {
+  width: 100%; height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin-bottom: 28px;
+}
+
+.project-result {
+  display: flex; gap: 32px; flex-wrap: wrap;
+}
+.result-item { display: flex; flex-direction: column; gap: 4px; }
+.result-num {
+  font-family: var(--ff-d); font-size: 36px;
+  font-weight: 700; color: var(--terra); line-height: 1;
+}
+.result-label {
+  font-size: 11px; color: var(--stone);
+  letter-spacing: 0.05em; max-width: 120px;
+  line-height: 1.4;
+}
+
+/* ── GRID CARDS (smaller) ─────────── */
+.project-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-bottom: 80px;
+}
+
+.project-card-sm {
+  background: var(--ink); overflow: hidden;
+  display: flex; flex-direction: column;
+  cursor: default;
+}
+
+.pc-visual-sm {
+  aspect-ratio: 4/3;
+  display: flex; align-items: center;
+  justify-content: center; padding: 28px;
+  position: relative; overflow: hidden;
+}
+
+.pc-img-sm {
+  max-width: 85%; max-height: 85%;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  transition: transform 0.4s var(--ease);
+}
+.project-card-sm:hover .pc-img-sm { transform: translateY(-6px) scale(1.02); }
+
+.pc-info-sm {
+  padding: 28px 28px 32px;
+  flex: 1; display: flex; flex-direction: column;
+  gap: 10px;
+}
+
+.pc-tags-sm { display: flex; gap: 6px; flex-wrap: wrap; }
+.ptsm {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 3px 8px; border: 1px solid rgba(255,255,255,0.08);
+  color: var(--stone); border-radius: 1px;
+}
+.ptsm.a { background: var(--terra); border-color: var(--terra); color: white; }
+
+.pc-client-sm {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--terra);
+}
+
+.pc-title-sm {
+  font-family: var(--ff-d); font-size: 22px;
+  font-weight: 600; color: var(--cream); line-height: 1.1;
+}
+
+.pc-desc-sm {
+  font-size: 12px; color: var(--stone);
+  line-height: 1.7; flex: 1;
+}
+
+/* ── IMPROVEMENT SECTION ─────────── */
+.improvement-section {
+  background: var(--carbon);
+  padding: 80px;
+}
+
+.imp-header { margin-bottom: 48px; }
+.imp-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--stone); margin-bottom: 12px;
+}
+.imp-title {
+  font-family: var(--ff-d); font-size: 36px;
+  font-style: italic; font-weight: 300;
+  color: var(--cream);
+}
+
+.imp-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.imp-card {
+  background: rgba(255,255,255,0.03);
+  padding: 28px 24px;
+  border-top: 2px solid rgba(255,255,255,0.05);
+  transition: border-color 0.3s;
+}
+.imp-card:hover { border-top-color: var(--terra); }
+
+.imp-thumb {
+  width: 100%; aspect-ratio: 4/3;
+  object-fit: cover; border-radius: 2px;
+  margin-bottom: 20px;
+  opacity: 0.7; filter: saturate(0.7);
+  transition: opacity 0.3s, filter 0.3s;
+}
+.imp-card:hover .imp-thumb { opacity: 0.9; filter: saturate(1); }
+
+.imp-card-title {
+  font-weight: 600; font-size: 14px;
+  color: var(--cream); margin-bottom: 8px;
+}
+.imp-card-issue {
+  font-size: 12px; color: var(--stone); line-height: 1.6;
+}
+.imp-card-fix {
+  font-size: 11px; color: var(--terra);
+  margin-top: 10px; font-weight: 500;
+}
+
+/* ── CTA SECTION ─────────────────── */
+.cta-section {
+  background: var(--ink); padding: 100px 80px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(196,82,28,0.08), transparent 70%);
+}
+
+.cta-eyebrow {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: 24px;
+}
+.cta-title {
+  font-family: var(--ff-d); font-size: clamp(40px, 5vw, 72px);
+  font-style: italic; font-weight: 300;
+  color: var(--cream); line-height: 1.1;
+  margin-bottom: 12px;
+}
+.cta-sub {
+  font-size: 16px; color: var(--stone);
+  margin-bottom: 48px; max-width: 480px;
+  margin-left: auto; margin-right: auto;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--ff-s); font-size: 12px;
+  font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 18px 44px;
+  background: var(--terra); color: var(--cream);
+  text-decoration: none; border-radius: 1px;
+  transition: background 0.25s, transform 0.25s;
+}
+.cta-btn:hover { background: #A8441A; transform: translateY(-2px); }
+
+/* ── FOOTER ──────────────────────── */
+footer {
+  background: var(--ink); border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 36px 80px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 11px; color: var(--stone); }
+.footer-copy span { color: var(--terra); }
+
+/* ── REVEAL ──────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.rd1 { transition-delay: 0.1s; }
+.rd2 { transition-delay: 0.2s; }
+.rd3 { transition-delay: 0.3s; }
+.rd4 { transition-delay: 0.4s; }
+
+/* ── RESPONSIVE ──────────────────── */
+@media (max-width: 1100px) {
+  .project-featured { grid-template-columns: 1fr; }
+  .project-visual { min-height: 360px; }
+  .project-grid { grid-template-columns: 1fr 1fr; }
+  .imp-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav, .hero, .portfolio-section, .improvement-section, .cta-section, footer { padding-left: 24px; padding-right: 24px; }
+  .filter-bar { padding: 0 24px; overflow-x: auto; }
+  .project-grid { grid-template-columns: 1fr; }
+  .imp-grid { grid-template-columns: 1fr; }
+  .project-specs { grid-template-columns: 1fr; }
+  .hero-meta { flex-wrap: wrap; gap: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="am-studio-website.html" class="nav-logo">
+    <span class="nl-am">am</span>
+    <div class="nl-rule"></div>
+    <span class="nl-studio">Studio</span>
+  </a>
+  <a href="am-studio-website.html" class="nav-back">
+    ← am Studio
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">Work</div>
+  <p class="hero-eyebrow">Portfolio 2023 – 2026</p>
+  <h1>Projekte,</h1>
+  <div class="hero-bold">die <span>wirken·</span></div>
+  <div class="hero-meta">
+    <div class="hm-item">
+      <span class="hm-label">Projekte abgeschlossen</span>
+      <span class="hm-value">7+</span>
+    </div>
+    <div class="hm-item">
+      <span class="hm-label">Formate</span>
+      <span class="hm-value">Web · Print · Illustration</span>
+    </div>
+    <div class="hm-item">
+      <span class="hm-label">Sprachen</span>
+      <span class="hm-value">DE · ES · EN</span>
+    </div>
+    <div class="hm-item">
+      <span class="hm-label">Region</span>
+      <span class="hm-value">Ortenaukreis · Regional</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active">Alle</button>
+  <button class="filter-btn">Print</button>
+  <button class="filter-btn">Web</button>
+  <button class="filter-btn">Illustration</button>
+  <button class="filter-btn">Social Media</button>
+</div>
+
+<!-- ═══ FEATURED PROJECT 1 — BONUSKARTE ═══ -->
+<section class="portfolio-section" style="padding-bottom: 2px;">
+  <div class="section-header reveal">
+    <span class="section-label">Featured · Print Design</span>
+    <span class="section-count">01 von 04 — Ausgewählte Projekte</span>
+  </div>
+
+  <div class="project-featured reveal">
+    <!-- Visual -->
+    <div class="project-visual scene-coffee">
+      <div class="scene-dots"></div>
+      <div class="scene-glow" style="top:-60px; right:-60px;"></div>
+      <div class="mockup-card-scene">
+        <img class="mockup-card mc-back"  src="portafolio/Bon_Karte_Vorde_R%C3%BCck_seite_1.png" alt="Bonuskarte Rückseite">
+        <img class="mockup-card mc-front" src="portafolio/Bon_Karte_Vorde_R%C3%BCck_seite_1.png" alt="Bonuskarte Vorderseite"
+             style="clip-path: inset(0 0 50% 0);">
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="project-info">
+      <div class="project-top">
+        <div class="project-tags">
+          <span class="ptag accent">Print Design</span>
+          <span class="ptag">Kundenbindung</span>
+          <span class="ptag">Gastronomie</span>
+        </div>
+        <div class="project-client">Cengiz Schwimmbadgastronomie</div>
+        <h2 class="project-title">Bonuskarte<br>Kaffee-Treue&shy;programm</h2>
+        <p class="project-desc">
+          Cengiz betreibt 12 Schwimmbad-Standorte in Baden-Württemberg und wollte ein einheitliches Kundenbindungssystem einführen — ohne das warme, gastfreundliche Image der Marke zu verlieren.
+        </p>
+        <div class="project-challenge">
+          <div class="pc-label">Die Aufgabe</div>
+          <p class="pc-text">"Eine Bonuskarte, die zum Kaffeegenuß einlädt — und die an allen 12 Standorten einheitlich eingesetzt werden kann."</p>
+        </div>
+        <div class="project-specs">
+          <div class="spec-cell">
+            <div class="spec-label">Format</div>
+            <div class="spec-value">DIN A7 · Vorder- & Rückseite</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Druck</div>
+            <div class="spec-value">4/4 Farbig · Mattlaminat</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Einsatz</div>
+            <div class="spec-value">12 Standorte</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Sprache</div>
+            <div class="spec-value">Deutsch</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-bottom">
+        <div class="project-divider"></div>
+        <div class="project-result">
+          <div class="result-item">
+            <span class="result-num">12</span>
+            <span class="result-label">Standorte mit einheitlichem System</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">2</span>
+            <span class="result-label">Seiten vollständig gestaltet</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">1</span>
+            <span class="result-label">Konsistente Markenstimme</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED PROJECT 2 — LOADED FRIES ═══ -->
+<section class="portfolio-section" style="padding-top: 2px; padding-bottom: 2px;">
+  <div class="project-featured reveal" style="direction: rtl;">
+    <!-- Visual (right side) -->
+    <div class="project-visual scene-green" style="direction: ltr;">
+      <div class="scene-dots"></div>
+      <div class="scene-glow" style="bottom:-60px; left:-60px;"></div>
+      <img class="mockup-menu" src="portafolio/Loaded_Fries_G%26G%40300x.png" alt="Loaded Fries Menükarte" style="direction:ltr;">
+    </div>
+
+    <!-- Info (left side) -->
+    <div class="project-info" style="direction: ltr;">
+      <div class="project-top">
+        <div class="project-tags">
+          <span class="ptag accent">Menükarte</span>
+          <span class="ptag">Print Design</span>
+          <span class="ptag">Food</span>
+        </div>
+        <div class="project-client">Cengiz Schwimmbadgastronomie</div>
+        <h2 class="project-title">Loaded Fries<br>Produktkarte</h2>
+        <p class="project-desc">
+          Einführung einer neuen Produktlinie mit 7 Varianten. Die Karte musste Appetit machen, Preise klar kommunizieren und im Schwimmbadbereich gut lesbar sein — sowohl als Aushang als auch digital.
+        </p>
+        <div class="project-challenge">
+          <div class="pc-label">Die Aufgabe</div>
+          <p class="pc-text">"Sieben Produkte, ein klares Layout — und trotzdem soll man beim Anschauen sofort Hunger bekommen."</p>
+        </div>
+        <div class="project-specs">
+          <div class="spec-cell">
+            <div class="spec-label">Format</div>
+            <div class="spec-value">A2 Aushang · Digital</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Produkte</div>
+            <div class="spec-value">7 Varianten abgebildet</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Einsatz</div>
+            <div class="spec-value">Multi-Standort</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Stil</div>
+            <div class="spec-value">Food-Fotografie + Grafik</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-bottom">
+        <div class="project-divider"></div>
+        <div class="project-result">
+          <div class="result-item">
+            <span class="result-num">7</span>
+            <span class="result-label">Produkte klar kommuniziert</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">2</span>
+            <span class="result-label">Formate — Print & Digital</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED PROJECT 3 — RECRUITING ═══ -->
+<section class="portfolio-section" style="padding-top: 2px; padding-bottom: 2px;">
+  <div class="project-featured reveal">
+    <div class="project-visual scene-blue">
+      <div class="scene-dots"></div>
+      <div class="scene-glow" style="top:-40px; right:-40px;"></div>
+      <div class="mockup-poster-wrap">
+        <div class="mockup-poster-shadow"></div>
+        <img class="mockup-recruit" src="portafolio/Ettlingen_6%40300x.png" alt="Recruiting Poster Ettlingen">
+      </div>
+    </div>
+    <div class="project-info">
+      <div class="project-top">
+        <div class="project-tags">
+          <span class="ptag accent">Recruiting Poster</span>
+          <span class="ptag">Social Media</span>
+          <span class="ptag">HR</span>
+        </div>
+        <div class="project-client">Cengiz · Albgaubad Ettlingen</div>
+        <h2 class="project-title">"Werde Glücklichmacher"<br>Stellenanzeige</h2>
+        <p class="project-desc">
+          Cengiz suchte Mitarbeiter für den neuen Standort Ettlingen. Die Stellenanzeige musste die Arbeitgebermarke transportieren, mehrere Stellen gleichzeitig kommunizieren und auf Instagram und als Aushang funktionieren.
+        </p>
+        <div class="project-challenge">
+          <div class="pc-label">Die Aufgabe</div>
+          <p class="pc-text">"Wir wollen nicht 'Stelle frei' kommunizieren — wir wollen Leute begeistern, Teil unseres Teams zu werden."</p>
+        </div>
+        <div class="project-specs">
+          <div class="spec-cell">
+            <div class="spec-label">Format</div>
+            <div class="spec-value">1:1 Social · A3 Print</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Kanal</div>
+            <div class="spec-value">Instagram · Aushang</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Stellen</div>
+            <div class="spec-value">6 Positionen</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Sprache</div>
+            <div class="spec-value">Deutsch</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-bottom">
+        <div class="project-divider"></div>
+        <div class="project-result">
+          <div class="result-item">
+            <span class="result-num">6</span>
+            <span class="result-label">Stellen klar kommuniziert</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">2</span>
+            <span class="result-label">Kanäle gleichzeitig bedient</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED PROJECT 4 — GORRO JOKILI ═══ -->
+<section class="portfolio-section" style="padding-top: 2px; padding-bottom: 80px;">
+  <div class="project-featured reveal" style="direction: rtl;">
+    <div class="project-visual" style="direction:ltr; padding: 0; overflow:hidden;">
+      <div class="mockup-illus-bg"></div>
+      <div class="scene-dots"></div>
+      <div class="scene-glow" style="top:50%; left:50%; transform:translate(-50%,-50%); width:300px; height:300px; background: radial-gradient(circle, rgba(196,82,28,0.2), transparent 70%);"></div>
+      <div class="mockup-illus-scene">
+        <img class="mockup-illus" src="portafolio/Gorro.png" alt="Gorro Jokili Illustration">
+      </div>
+    </div>
+    <div class="project-info" style="direction:ltr;">
+      <div class="project-top">
+        <div class="project-tags">
+          <span class="ptag accent">Illustration</span>
+          <span class="ptag">Vektordesign</span>
+          <span class="ptag">Kulturelles Projekt</span>
+        </div>
+        <div class="project-client">Tovarer Jokili Verein · Colonia Tovar</div>
+        <h2 class="project-title">Jokili-Narrenkappe<br>Vektorillustration</h2>
+        <p class="project-desc">
+          Der Jokili-Verein aus Colonia Tovar — einer deutschstämmigen Gemeinde in Venezuela — brauchte eine digitale Vektorversion ihrer traditionellen Narrenkappe für die Website und zukünftige Vereinsmaterialien.
+        </p>
+        <div class="project-challenge">
+          <div class="pc-label">Die Aufgabe</div>
+          <p class="pc-text">"Die Kappe ist seit 1976 das Symbol unseres Vereins — sie muss aussehen wie das Original, aber für alle digitalen und gedruckten Formate skalierbar sein."</p>
+        </div>
+        <div class="project-specs">
+          <div class="spec-cell">
+            <div class="spec-label">Format</div>
+            <div class="spec-value">Vektorgrafik (SVG/PNG)</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Einsatz</div>
+            <div class="spec-value">Web · Print · Merch</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Projekt</div>
+            <div class="spec-value">tovarerjokili.com</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-label">Kontext</div>
+            <div class="spec-value">DE-VE Kulturerbe</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-bottom">
+        <div class="project-divider"></div>
+        <div class="project-result">
+          <div class="result-item">
+            <span class="result-num">∞</span>
+            <span class="result-label">Skalierbar in jedem Format</span>
+          </div>
+          <div class="result-item">
+            <span class="result-num">50</span>
+            <span class="result-label">Jahre Tradition digital bewahrt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GRID — FURTHER WORK ═══ -->
+<section class="portfolio-section" style="background: var(--carbon); padding-top: 60px;">
+  <div class="section-header reveal" style="border-bottom-color: rgba(255,255,255,0.08);">
+    <span class="section-label" style="color:var(--stone);">Weitere Arbeiten · Event & Social</span>
+    <span class="section-count" style="color:var(--stone);">Ausgewählte Stücke</span>
+  </div>
+
+  <div class="project-grid">
+    <!-- Blühendes 1 -->
+    <div class="project-card-sm reveal rd1">
+      <div class="pc-visual-sm" style="background: linear-gradient(135deg, #2A1F0A 0%, #1A1408 100%);">
+        <div class="scene-dots"></div>
+        <img class="pc-img-sm" src="portafolio/Bl%C3%BChendes_1-100.jpg" alt="Blühendes Endingen Champignon">
+      </div>
+      <div class="pc-info-sm">
+        <div class="pc-tags-sm">
+          <span class="ptsm a">Social Media</span>
+          <span class="ptsm">Event</span>
+        </div>
+        <div class="pc-client-sm">Blühendes Endingen 2024</div>
+        <div class="pc-title-sm">Champignon im Höschen</div>
+        <p class="pc-desc-sm">Post für die Teilnahme am Stadtfest — Champignon-Spezialität mit Eventkontext und Fotos vor Ort.</p>
+      </div>
+    </div>
+
+    <!-- Blühendes Banane -->
+    <div class="project-card-sm reveal rd2">
+      <div class="pc-visual-sm" style="background: linear-gradient(135deg, #1A2510 0%, #101A08 100%);">
+        <div class="scene-dots"></div>
+        <img class="pc-img-sm" src="portafolio/Bl%C3%BChendes_Banane-100.jpg" alt="Blühendes Endingen Banane">
+      </div>
+      <div class="pc-info-sm">
+        <div class="pc-tags-sm">
+          <span class="ptsm a">Social Media</span>
+          <span class="ptsm">Food</span>
+        </div>
+        <div class="pc-client-sm">Blühendes Endingen 2024</div>
+        <div class="pc-title-sm">Kochbananen-Chips</div>
+        <p class="pc-desc-sm">Zweite Variante der Eventkommunikation mit anderem Produkt und Produktfoto als Hauptelement.</p>
+      </div>
+    </div>
+
+    <!-- Kindergeburtstag screen -->
+    <div class="project-card-sm reveal rd3">
+      <div class="pc-visual-sm" style="background: linear-gradient(135deg, #0A1020 0%, #080C18 100%);">
+        <div class="scene-dots"></div>
+        <img class="pc-img-sm" src="Kindergeburtstag_A3_QF_1.png" alt="Kindergeburtstag A3">
+      </div>
+      <div class="pc-info-sm">
+        <div class="pc-tags-sm">
+          <span class="ptsm a">Print · Digital</span>
+          <span class="ptsm">Cengiz</span>
+        </div>
+        <div class="pc-client-sm">Cengiz Schwimmbadgastronomie</div>
+        <div class="pc-title-sm">Kindergeburtstag im Schwimmbad</div>
+        <p class="pc-desc-sm">A3-Plakat und Bildschirmversion für das Kindergeburtstag-Angebot. Zwei Formate, ein System.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IN PROGRESS ═══ -->
+<div class="improvement-section reveal">
+  <div class="imp-header">
+    <div class="imp-label">In Bearbeitung — Nächste Iteration</div>
+    <h3 class="imp-title">Projekte, die noch besser werden.</h3>
+  </div>
+  <div class="imp-grid">
+    <div class="imp-card">
+      <img class="imp-thumb" src="portafolio/Bl%C3%BChendes_2-100.jpg" alt="Blühendes v2">
+      <div class="imp-card-title">Blühendes Endingen v2</div>
+      <p class="imp-card-issue">Zu viele Schriftschnitte gleichzeitig. Visuelle Hierarchie kann klarer werden.</p>
+      <div class="imp-card-fix">→ Überarbeitung Typografiesystem</div>
+    </div>
+    <div class="imp-card">
+      <img class="imp-thumb" src="portafolio/Kindergeburstag_A3_QF_1.png" alt="Kinder A3">
+      <div class="imp-card-title">Kindergeburtstag A3</div>
+      <p class="imp-card-issue">Hintergrundfarbe (Olive) zu dominant. Lesbarkeit auf Distanz eingeschränkt.</p>
+      <div class="imp-card-fix">→ Hellerer Hintergrund, mehr Kontrast</div>
+    </div>
+    <div class="imp-card">
+      <img class="imp-thumb" src="portafolio/Grill%20Abend%20korrektur_Mesa%20de%20trabajo%201.jpg" alt="Grillabend">
+      <div class="imp-card-title">Grillabend Familienbad Zell</div>
+      <p class="imp-card-issue">Hintergrund wirkt zu generisch. Illustrierter Grill passt nicht zum Markenstil.</p>
+      <div class="imp-card-fix">→ Foto-Hintergrund + cleaner Stil</div>
+    </div>
+    <div class="imp-card">
+      <img class="imp-thumb" src="portafolio/Bildschirm_Kindergeburtstag_OG_3%40300x.png" alt="Kinder Screen">
+      <div class="imp-card-title">Kindergeburtstag Screen-Banner</div>
+      <p class="imp-card-issue">Gute Struktur, aber Farbpalette inkonsistent mit anderen Cengiz-Materialien.</p>
+      <div class="imp-card-fix">→ Paletteangleichung an Corporate Design</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+  <div class="cta-eyebrow">Euer Projekt</div>
+  <h2 class="cta-title">Nächstes auf der Liste?</h2>
+  <p class="cta-sub">Logo, Website, Flyer oder Einladung — wir machen es sichtbar. Auf Deutsch, Spanisch oder Englisch.</p>
+  <a href="am-studio-website.html#kontakt" class="cta-btn">
+    Projekt anfragen
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 <span>am Studio</span> · Eine Division von am Solutions · Gengenbach</div>
+  <div class="footer-copy">Impressum · Datenschutz</div>
+</footer>
+
+<script>
+// Scroll reveal
+const els = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+els.forEach(el => obs.observe(el));
+
+// Filter buttons (UI only for now)
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

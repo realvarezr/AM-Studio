@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>am Studio — Brand Identity System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #0E0C0A;
+    --cream:      #F3EDE3;
+    --terra:      #C4521C;
+    --stone:      #8A837A;
+    --warm-mid:   #2A2520;
+    --light-edge: #E8E0D4;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:    'Outfit', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── COVER ─────────────────────────────────────── */
+  .cover {
+    min-height: 100vh;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,82,28,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 60px; right: 80px;
+    width: 1px; height: 200px;
+    background: var(--terra);
+    opacity: 0.6;
+  }
+
+  .cover-label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 60px;
+  }
+
+  .logo-mark {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 48px;
+  }
+
+  .logo-am {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(72px, 10vw, 120px);
+    color: var(--cream);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
+  .logo-rule {
+    width: 80px;
+    height: 3px;
+    background: var(--terra);
+    margin: 14px 0 12px;
+  }
+
+  .logo-studio {
+    font-family: var(--font-sans);
+    font-weight: 200;
+    font-size: clamp(24px, 3.5vw, 42px);
+    color: var(--cream);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .cover-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--stone);
+    max-width: 440px;
+    line-height: 1.5;
+    margin-bottom: 80px;
+  }
+
+  .cover-meta {
+    position: absolute;
+    bottom: 80px; left: 80px;
+    display: flex;
+    gap: 48px;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cream);
+    opacity: 0.7;
+  }
+
+  /* ── SECTION LAYOUT ─────────────────────────────── */
+  .section {
+    padding: 100px 80px;
+    border-bottom: 1px solid var(--light-edge);
+  }
+
+  .section-dark {
+    background: var(--warm-mid);
+    color: var(--cream);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .section-num {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--terra);
+  }
+
+  .section-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: inherit;
+    opacity: 0.5;
+  }
+
+  /* ── COLORS ─────────────────────────────────────── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2px;
+  }
+
+  .color-swatch {
+    aspect-ratio: 1 / 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .swatch-name {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+
+  .swatch-hex {
+    font-size: 11px;
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  .swatch-role {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 10px;
+    opacity: 0.5;
+  }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────── */
+  .type-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .type-family {
+    border-top: 1px solid var(--light-edge);
+    padding-top: 28px;
+  }
+
+  .type-meta {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 24px;
+  }
+
+  .type-display-sample {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 58px);
+    line-height: 1.1;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .type-display-italic {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--stone);
+    margin-bottom: 24px;
+  }
+
+  .type-weights {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .type-weight-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light-edge);
+  }
+
+  .tw-sample { font-family: var(--font-display); font-size: 18px; color: var(--ink); }
+  .tw-label { font-size: 10px; color: var(--stone); letter-spacing: 0.15em; text-transform: uppercase; }
+
+  .sans-specimen {
+    font-family: var(--font-sans);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .sans-weights {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sw-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light-edge);
+  }
+
+  .sw-sample { font-family: var(--font-sans); font-size: 16px; color: var(--ink); }
+  .sw-label { font-size: 10px; color: var(--stone); letter-spacing: 0.15em; text-transform: uppercase; }
+
+  /* ── LOGO SYSTEM ─────────────────────────────────── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .logo-cell {
+    padding: 56px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    min-height: 280px;
+  }
+
+  .logo-cell-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    align-self: flex-end;
+  }
+
+  /* Inline logo */
+  .logo-inline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .li-am {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .li-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 0;
+    background: var(--terra);
+    margin: 0 8px;
+    flex-shrink: 0;
+  }
+
+  .li-studio {
+    font-family: var(--font-sans);
+    font-weight: 200;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  /* Stacked logo */
+  .logo-stacked {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ls-am {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 52px;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+  }
+
+  .ls-rule {
+    width: 52px;
+    height: 2px;
+    background: var(--terra);
+    margin: 10px 0 8px;
+  }
+
+  .ls-studio {
+    font-family: var(--font-sans);
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* Minimal logo */
+  .logo-minimal {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lm-mark {
+    width: 32px;
+    height: 32px;
+    position: relative;
+  }
+
+  .lm-mark svg { width: 100%; height: 100%; }
+
+  .lm-wordmark {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  /* ── SCALE ───────────────────────────────────────── */
+  .scale-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .scale-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .scale-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  /* ── VOICE ───────────────────────────────────────── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .voice-cell {
+    padding: 48px 40px;
+    background: var(--cream);
+  }
+
+  .voice-cell.dark { background: var(--ink); color: var(--cream); }
+
+  .voice-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .voice-quote {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    color: inherit;
+    margin-bottom: 24px;
+  }
+
+  .voice-note {
+    font-size: 12px;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── MOCKUPS ─────────────────────────────────────── */
+  .mockup-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  /* Business Card */
+  .card-front, .card-back {
+    aspect-ratio: 85.6 / 54;
+    border-radius: 4px;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 380px;
+    box-shadow: 0 20px 60px rgba(14,12,10,0.15);
+  }
+
+  .card-front {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .card-back {
+    background: var(--cream);
+    color: var(--ink);
+    border: 1px solid var(--light-edge);
+  }
+
+  .card-name { font-weight: 600; font-size: 15px; }
+  .card-title { font-size: 10px; color: var(--terra); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
+  .card-contact { font-size: 10px; color: var(--stone); line-height: 1.8; }
+  .card-url { font-size: 11px; font-weight: 600; color: var(--terra); letter-spacing: 0.05em; }
+
+  .mockup-panel {
+    padding: 56px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    background: var(--light-edge);
+  }
+
+  .mockup-panel.dark { background: var(--warm-mid); }
+
+  /* ── SPACING SYSTEM ──────────────────────────────── */
+  .spacing-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .spacing-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .spacing-block {
+    background: var(--terra);
+    opacity: 0.8;
+    width: 40px;
+  }
+
+  .spacing-val {
+    font-size: 10px;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── DO/DON'T ────────────────────────────────────── */
+  .dd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .dd-cell {
+    padding: 48px 40px;
+  }
+
+  .dd-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 10px;
+    display: inline-block;
+    margin-bottom: 28px;
+  }
+
+  .dd-do .dd-label { background: #1B4D3E; color: #7EDBB4; }
+  .dd-dont .dd-label { background: #4D1B1B; color: #DB7E7E; }
+
+  .dd-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .dd-list li {
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .dd-do .dd-list li::before { content: '→'; position: absolute; left: 0; color: #1B7A56; font-size: 12px; top: 2px; }
+  .dd-dont .dd-list li::before { content: '✕'; position: absolute; left: 0; color: #AA2222; font-size: 10px; top: 3px; }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  .id-footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .id-footer-logo .ls-am { color: var(--cream); font-size: 36px; }
+  .id-footer-logo .ls-studio { color: var(--cream); }
+
+  .id-footer-text {
+    text-align: right;
+    font-size: 11px;
+    color: var(--stone);
+    line-height: 1.8;
+  }
+
+  /* ── DIVIDER ─────────────────────────────────────── */
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--terra);
+    margin-bottom: 12px;
+  }
+
+  /* ── ANIMATIONS ──────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .cover > * {
+    animation: fadeUp 0.8s ease both;
+  }
+  .cover-label { animation-delay: 0.1s; }
+  .logo-mark   { animation-delay: 0.25s; }
+  .cover-tagline { animation-delay: 0.4s; }
+  .cover-meta  { animation-delay: 0.55s; }
+
+  @media (max-width: 768px) {
+    .cover, .section, .id-footer { padding: 48px 28px; }
+    .type-showcase, .logo-grid, .voice-grid, .mockup-row, .dd-grid { grid-template-columns: 1fr; }
+    .logo-grid { grid-template-columns: 1fr 1fr; }
+    .cover-meta { flex-direction: column; gap: 20px; bottom: 48px; left: 28px; }
+    .id-footer { flex-direction: column; gap: 32px; align-items: flex-start; }
+    .id-footer-text { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-label">Brand Identity System — Documento Interno v1.0</div>
+
+  <div class="logo-mark">
+    <div class="logo-am">am</div>
+    <div class="logo-rule"></div>
+    <div class="logo-studio">Studio</div>
+  </div>
+
+  <p class="cover-tagline">
+    Diseño que posiciona. Identidad que perdura.<br>
+    Diseño gráfico &amp; presencia digital.
+  </p>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="meta-label">División de</span>
+      <span class="meta-value">am Solutions</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Mercado</span>
+      <span class="meta-value">DE · ES · EN</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="meta-label">Versión</span>
+      <span class="meta-value">Abril 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 01 COLORS ══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">Paleta de Color</span>
+  </div>
+
+  <div class="color-grid">
+    <!-- Ink -->
+    <div class="color-swatch" style="background:#0E0C0A; color:#F3EDE3;">
+      <div class="swatch-name">Tinta</div>
+      <div class="swatch-hex">#0E0C0A</div>
+      <div class="swatch-role">Primario · Fondos oscuros</div>
+    </div>
+    <!-- Cream -->
+    <div class="color-swatch" style="background:#F3EDE3; color:#0E0C0A;">
+      <div class="swatch-name">Crema</div>
+      <div class="swatch-hex">#F3EDE3</div>
+      <div class="swatch-role">Fondo base · Fondos claros</div>
+    </div>
+    <!-- Terra -->
+    <div class="color-swatch" style="background:#C4521C; color:#F3EDE3;">
+      <div class="swatch-name">Terracota</div>
+      <div class="swatch-hex">#C4521C</div>
+      <div class="swatch-role">Acento · CTA · Énfasis</div>
+    </div>
+    <!-- Stone -->
+    <div class="color-swatch" style="background:#8A837A; color:#F3EDE3;">
+      <div class="swatch-name">Piedra</div>
+      <div class="swatch-hex">#8A837A</div>
+      <div class="swatch-role">Texto secundario · Neutro</div>
+    </div>
+    <!-- Warm Mid -->
+    <div class="color-swatch" style="background:#2A2520; color:#F3EDE3;">
+      <div class="swatch-name">Carbón</div>
+      <div class="swatch-hex">#2A2520</div>
+      <div class="swatch-role">Secciones oscuras</div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px; padding:32px 40px; background:var(--light-edge);">
+    <div class="divider"></div>
+    <p style="font-size:13px; color:var(--stone); line-height:1.8; max-width:640px;">
+      <strong style="color:var(--ink); font-weight:600;">Lógica de la paleta.</strong>
+      La Tinta y la Crema crean contraste premium sin recurrir al blanco puro ni al negro absoluto — esto aporta calidez. El Terracota es el acento diferenciador: evoca creatividad, calidez latina y distinción europea a la vez. No usar el acento como fondo ni en texto corrido.
+    </p>
+  </div>
+</div>
+
+<!-- ══ 02 TYPOGRAPHY ══════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Sistema Tipográfico</span>
+  </div>
+
+  <div class="type-showcase">
+    <!-- Display -->
+    <div class="type-family">
+      <div class="type-meta">Tipografía Display — Cormorant Garamond</div>
+      <div class="type-display-sample">Diseño que<br>habla antes<br>de leer.</div>
+      <div class="type-display-italic">Presencia digital con carácter real.</div>
+      <div class="type-weights">
+        <div class="type-weight-row">
+          <span class="tw-sample" style="font-weight:700;">Garamond Bold — Títulos hero</span>
+          <span class="tw-label">700</span>
+        </div>
+        <div class="type-weight-row">
+          <span class="tw-sample" style="font-weight:600;">Garamond SemiBold — H2, H3</span>
+          <span class="tw-label">600</span>
+        </div>
+        <div class="type-weight-row">
+          <span class="tw-sample" style="font-style:italic; font-weight:300;">Garamond Light Italic — Taglines</span>
+          <span class="tw-label">300i</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sans -->
+    <div class="type-family">
+      <div class="type-meta">Tipografía Funcional — Outfit</div>
+      <div class="sans-specimen">am Studio</div>
+      <div style="font-family:'Outfit',sans-serif; font-size:15px; color:var(--stone); margin-bottom:24px; line-height:1.7; font-weight:300;">
+        Diseño gráfico y presencia digital para negocios que quieren ser vistos. Trabajamos en alemán, español e inglés.
+      </div>
+      <div class="sans-weights">
+        <div class="sw-row">
+          <span class="sw-sample" style="font-weight:800;">ExtraBold — Logo / Display</span>
+          <span class="sw-label">800</span>
+        </div>
+        <div class="sw-row">
+          <span class="sw-sample" style="font-weight:600;">SemiBold — Botones / Etiquetas</span>
+          <span class="sw-label">600</span>
+        </div>
+        <div class="sw-row">
+          <span class="sw-sample" style="font-weight:400;">Regular — Cuerpo de texto</span>
+          <span class="sw-label">400</span>
+        </div>
+        <div class="sw-row">
+          <span class="sw-sample" style="font-weight:200;">ExtraLight — Logo "Studio"</span>
+          <span class="sw-label">200</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 03 LOGO SYSTEM ══════════════════════════════════ -->
+<div class="section section-dark">
+  <div class="section-header">
+    <span class="section-num" style="color:var(--terra);">03</span>
+    <span class="section-title" style="color:var(--cream);">Sistema de Logo</span>
+  </div>
+
+  <div class="logo-grid">
+    <!-- Stacked — light on dark -->
+    <div class="logo-cell" style="background:#141210;">
+      <div class="logo-stacked">
+        <div class="ls-am" style="color:#F3EDE3;">am</div>
+        <div class="ls-rule"></div>
+        <div class="ls-studio" style="color:#F3EDE3;">Studio</div>
+      </div>
+      <span class="logo-cell-label" style="color:var(--stone);">Vertical · Fondo oscuro</span>
+    </div>
+
+    <!-- Inline — light on dark -->
+    <div class="logo-cell" style="background:var(--warm-mid);">
+      <div class="logo-inline">
+        <div class="li-am" style="color:#F3EDE3;">am</div>
+        <div class="li-dot"></div>
+        <div class="li-studio" style="color:#F3EDE3;">Studio</div>
+      </div>
+      <span class="logo-cell-label" style="color:var(--stone);">Horizontal · Uso en navegación</span>
+    </div>
+
+    <!-- Stacked — dark on light -->
+    <div class="logo-cell" style="background:#F3EDE3;">
+      <div class="logo-stacked">
+        <div class="ls-am" style="color:var(--ink);">am</div>
+        <div class="ls-rule"></div>
+        <div class="ls-studio" style="color:var(--ink);">Studio</div>
+      </div>
+      <span class="logo-cell-label" style="color:var(--stone);">Vertical · Fondo claro</span>
+    </div>
+
+    <!-- Inline — dark on light -->
+    <div class="logo-cell" style="background:#E8E0D4;">
+      <div class="logo-inline">
+        <div class="li-am" style="color:var(--ink);">am</div>
+        <div class="li-dot"></div>
+        <div class="li-studio" style="color:var(--ink);">Studio</div>
+      </div>
+      <span class="logo-cell-label" style="color:var(--stone);">Horizontal · Papelería</span>
+    </div>
+
+    <!-- Terra accent -->
+    <div class="logo-cell" style="background:var(--terra);">
+      <div class="logo-stacked">
+        <div class="ls-am" style="color:#F3EDE3;">am</div>
+        <div class="ls-rule" style="background:#F3EDE3;"></div>
+        <div class="ls-studio" style="color:#F3EDE3;">Studio</div>
+      </div>
+      <span class="logo-cell-label" style="color:rgba(255,255,255,0.5);">Vertical · Acento</span>
+    </div>
+
+    <!-- Monochrome -->
+    <div class="logo-cell" style="background:#F3EDE3; filter:grayscale(1);">
+      <div class="logo-stacked">
+        <div class="ls-am" style="color:#0E0C0A;">am</div>
+        <div class="ls-rule" style="background:#0E0C0A;"></div>
+        <div class="ls-studio" style="color:#0E0C0A;">Studio</div>
+      </div>
+      <span class="logo-cell-label" style="color:#8A837A;">Monocromático · Impresión 1 tinta</span>
+    </div>
+  </div>
+
+  <div style="margin-top:48px; padding:32px 40px; background:rgba(255,255,255,0.05);">
+    <div class="divider"></div>
+    <p style="font-size:13px; color:var(--stone); line-height:1.8; max-width:640px;">
+      <strong style="color:var(--cream); font-weight:600;">Anatomía del logo.</strong>
+      "am" en Outfit ExtraBold — continúa el DNA de am Solutions. El separador terracota de 2px marca el quiebre entre la marca madre y la división creativa. "Studio" en Outfit ExtraLight crea tensión tipográfica entre peso máximo y peso mínimo. El punto cuadrado (■) en horizontal comunica precisión y diseño.
+    </p>
+  </div>
+</div>
+
+<!-- ══ 04 MOCKUPS ══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">Aplicaciones — Mockups</span>
+  </div>
+
+  <div class="mockup-row">
+    <!-- Card dark -->
+    <div class="mockup-panel dark">
+      <div class="card-front">
+        <div class="logo-stacked" style="transform:scale(0.75); transform-origin:left top;">
+          <div class="ls-am" style="color:#F3EDE3; font-size:36px;">am</div>
+          <div class="ls-rule" style="width:36px; margin:7px 0 5px;"></div>
+          <div class="ls-studio" style="color:#F3EDE3; font-size:10px; letter-spacing:0.3em;">Studio</div>
+        </div>
+        <div>
+          <div class="card-name" style="color:#F3EDE3;">Ricardo Alvarez</div>
+          <div class="card-title">Director Creativo</div>
+          <div class="card-contact" style="margin-top:10px;">
+            studio@am-solutions.de<br>
+            +49 175 703 95 70<br>
+            am-studio.de
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card light -->
+    <div class="mockup-panel" style="background:#E8E0D4;">
+      <div class="card-back">
+        <div class="logo-inline" style="transform:scale(0.75); transform-origin:left top;">
+          <div class="li-am" style="color:var(--ink); font-size:30px;">am</div>
+          <div class="li-dot"></div>
+          <div class="li-studio" style="color:var(--ink); font-size:12px; letter-spacing:0.25em;">Studio</div>
+        </div>
+        <div>
+          <div style="width:40px; height:2px; background:var(--terra); margin-bottom:12px;"></div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:var(--stone); line-height:1.6;">
+            Diseño gráfico &amp;<br>presencia digital.
+          </div>
+          <div style="margin-top:16px;" class="card-url">am-studio.de</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email signature mockup -->
+  <div style="margin-top:2px; padding:48px 40px; background:var(--light-edge);">
+    <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--terra); margin-bottom:24px;">Firma de correo electrónico</div>
+    <div style="background:white; padding:32px; max-width:500px; border-left:3px solid var(--terra); box-shadow:0 4px 24px rgba(14,12,10,0.08);">
+      <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:15px; color:var(--ink);">Ricardo Alvarez</div>
+      <div style="font-family:'Outfit',sans-serif; font-size:11px; color:var(--terra); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Director Creativo · am Studio</div>
+      <div style="font-size:12px; color:var(--stone); line-height:2; font-family:'Outfit',sans-serif;">
+        📧 studio@am-solutions.de<br>
+        📞 +49 175 703 95 70<br>
+        🌐 am-studio.de<br>
+        📍 Gengenbach, Baden-Württemberg
+      </div>
+      <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--light-edge); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13px; color:#bbb;">
+        Diseño gráfico · Web Design · Identidad Visual · DE · ES · EN
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 05 BRAND VOICE ══════════════════════════════════ -->
+<div class="section" style="background:var(--ink); color:var(--cream); border-bottom:none;">
+  <div class="section-header">
+    <span class="section-num" style="color:var(--terra);">05</span>
+    <span class="section-title" style="color:var(--cream);">Voz de Marca</span>
+  </div>
+
+  <div class="voice-grid">
+    <div class="voice-cell dark">
+      <span class="voice-label">✓ Así hablamos</span>
+      <p class="voice-quote">"Tu negocio merece ser visto. Nosotros hacemos que eso pase."</p>
+      <p class="voice-note">Directo · Confiado · Sin rodeos · Orientado al cliente</p>
+    </div>
+    <div class="voice-cell">
+      <span class="voice-label">✕ Así no hablamos</span>
+      <p class="voice-quote" style="color:var(--stone);">"Ofrecemos soluciones creativas e innovadoras para potenciar su marca..."</p>
+      <p class="voice-note" style="color:#aaa;">Genérico · Vacío · Sin personalidad · Corporativo frío</p>
+    </div>
+    <div class="voice-cell">
+      <span class="voice-label" style="background:rgba(196,82,28,0.1);">Palabras que nos definen</span>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;">
+        <span style="padding:6px 14px; background:var(--light-edge); font-size:12px; font-family:'Outfit',sans-serif; font-weight:500;">Concreto</span>
+        <span style="padding:6px 14px; background:var(--light-edge); font-size:12px; font-family:'Outfit',sans-serif; font-weight:500;">Trilingüe</span>
+        <span style="padding:6px 14px; background:var(--light-edge); font-size:12px; font-family:'Outfit',sans-serif; font-weight:500;">Cercano</span>
+        <span style="padding:6px 14px; background:var(--light-edge); font-size:12px; font-family:'Outfit',sans-serif; font-weight:500;">Regional</span>
+        <span style="padding:6px 14px; background:var(--light-edge); font-size:12px; font-family:'Outfit',sans-serif; font-weight:500;">Premium accesible</span>
+        <span style="padding:6px 14px; background:var(--terra); color:white; font-size:12px; font-family:'Outfit',sans-serif; font-weight:500;">Multicultural</span>
+      </div>
+    </div>
+    <div class="voice-cell dark">
+      <span class="voice-label">Diferenciador clave</span>
+      <p class="voice-quote">"La única agencia de diseño en la región que trabaja en alemán, español e inglés — sin intermediarios."</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 06 DO / DON'T ══════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <span class="section-title">Reglas de Uso de Marca</span>
+  </div>
+
+  <div class="dd-grid">
+    <div class="dd-cell dd-do" style="background:#F0FAF5;">
+      <span class="dd-label">✓ Siempre</span>
+      <ul class="dd-list">
+        <li>"am" siempre en minúsculas — sin excepción</li>
+        <li>El separador terracota siempre presente entre "am" y "Studio"</li>
+        <li>Outfit ExtraBold para "am", ExtraLight para "Studio"</li>
+        <li>Espacio generoso alrededor del logo (zona de exclusión mínima = altura de la "a")</li>
+        <li>Usar solo las variantes aprobadas de color del logo</li>
+        <li>Cormorant Garamond para taglines y textos editoriales</li>
+      </ul>
+    </div>
+    <div class="dd-cell dd-dont" style="background:#FAF0F0;">
+      <span class="dd-label">✕ Nunca</span>
+      <ul class="dd-list">
+        <li>No escribir "AM Studio" o "Am Studio" — siempre "am Studio"</li>
+        <li>No estirar, deformar ni rotar el logo</li>
+        <li>No cambiar el color del acento terracota por otro</li>
+        <li>No usar el logo sobre fondos que no contrasten suficientemente</li>
+        <li>No aplicar sombras, biseles ni efectos al logo</li>
+        <li>No mezclar Cormorant y Outfit en el mismo bloque de texto corrido</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<div class="id-footer">
+  <div class="id-footer-logo">
+    <div class="logo-stacked">
+      <div class="ls-am" style="color:#F3EDE3;">am</div>
+      <div class="ls-rule"></div>
+      <div class="ls-studio" style="color:#F3EDE3;">Studio</div>
+    </div>
+  </div>
+  <div class="id-footer-text">
+    División de am Solutions · Gengenbach, Deutschland<br>
+    Diseño Gráfico &amp; Presencia Digital · DE · ES · EN<br>
+    <span style="color:var(--terra);">Documento interno — Brand Identity v1.0 · 2026</span>
+  </div>
+</div>
+
+</body>
+</html>

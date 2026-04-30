@@ -137,11 +137,33 @@ function submitForm() {
       : 'Por favor completa todos los campos obligatorios.');
     return;
   }
-  // Here you'd send to your backend or Formspree/Netlify Forms
-  // For now: show success state
-  document.getElementById('contactForm').style.display = 'none';
-  const success = document.getElementById('formSuccess');
-  success.classList.add('show');
+  const phone   = document.getElementById('fphone')?.value.trim() || '';
+  const service = document.getElementById('fservice')?.value || '';
+
+  const btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = currentLang === 'de' ? 'Wird gesendet…' : 'Enviando…';
+
+  const body = new URLSearchParams({ nombre: name, email, telefono: phone, servicio: service, mensaje: message });
+
+  fetch('enviar-contacto.php', { method: 'POST', body })
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok) {
+        document.getElementById('contactForm').style.display = 'none';
+        const success = document.getElementById('formSuccess');
+        success.classList.add('show');
+      } else {
+        alert(data.error || (currentLang === 'de' ? 'Fehler beim Senden.' : 'Error al enviar.'));
+        btn.disabled = false;
+        btn.textContent = currentLang === 'de' ? 'Nachricht senden →' : 'Enviar mensaje →';
+      }
+    })
+    .catch(() => {
+      alert(currentLang === 'de' ? 'Verbindungsfehler. Bitte versuche es später erneut.' : 'Error de conexión. Por favor intenta más tarde.');
+      btn.disabled = false;
+      btn.textContent = currentLang === 'de' ? 'Nachricht senden →' : 'Enviar mensaje →';
+    });
 }
 
 /* ── PORTFOLIO MODAL ───────────────────── */

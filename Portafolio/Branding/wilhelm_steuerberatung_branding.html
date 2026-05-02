@@ -1,0 +1,407 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap');
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --forest:#1a3528;
+  --forest-mid:#2a5040;
+  --forest-light:#3d7060;
+  --sage:#7aab90;
+  --mint:#b8d8c8;
+  --cream:#f5f2ec;
+  --warm:#ede8df;
+  --stone:#8a8478;
+  --ink:#1c1c1a;
+  --white:#faf9f6;
+  --gold:#c8a96e;
+}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+
+.header{background:var(--forest);padding:4rem 3rem 3.5rem;position:relative;overflow:hidden;border-bottom:3px solid var(--forest-mid)}
+.header-leaf{position:absolute;right:-2rem;top:-2rem;width:280px;height:280px;border-radius:50%;background:var(--forest-mid);opacity:.4}
+.header-leaf2{position:absolute;right:4rem;bottom:-4rem;width:180px;height:180px;border-radius:50%;background:var(--forest-light);opacity:.2}
+.header-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem}
+.header-eyebrow{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.38em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:1.4rem}
+.header-logo{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:400;color:var(--white);line-height:1;letter-spacing:.02em}
+.header-logo span{color:var(--gold)}
+.header-rule{width:48px;height:2px;background:var(--gold);margin:1.2rem 0}
+.header-tagline{font-family:'DM Sans',sans-serif;font-size:.72rem;color:rgba(255,255,255,.5);letter-spacing:.22em;text-transform:uppercase;font-weight:300}
+.header-right{text-align:right}
+.header-initials{font-family:'Playfair Display',serif;font-size:5.5rem;font-weight:600;color:rgba(255,255,255,.08);line-height:1;letter-spacing:.04em}
+.header-badge{display:inline-block;border:1px solid rgba(200,169,110,.4);padding:.35rem 1rem;font-family:'DM Mono',monospace;font-size:.5rem;color:var(--gold);letter-spacing:.28em;text-transform:uppercase;margin-top:1.2rem}
+
+.section{padding:3rem 3rem;border-bottom:1px solid var(--warm)}
+.section-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.5rem}
+.section-num{font-family:'DM Mono',monospace;font-size:.54rem;color:var(--sage);letter-spacing:.2em}
+.section-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--forest)}
+
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--warm)}
+.logo-cell{background:var(--white);padding:2.5rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:175px;text-align:center;gap:.8rem}
+.logo-cell.forest{background:var(--forest)}
+.logo-cell.cream{background:var(--cream)}
+.logo-cell.sage{background:var(--mint)}
+.lc-label{font-family:'DM Mono',monospace;font-size:.46rem;letter-spacing:.28em;text-transform:uppercase;color:var(--stone);margin-top:auto}
+.logo-cell.forest .lc-label{color:rgba(255,255,255,.3)}
+
+.lv1{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:400;color:var(--forest);letter-spacing:.04em;line-height:1.1}
+.lv1-sub{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.35em;text-transform:uppercase;color:var(--stone);margin-top:.5rem}
+.lv1-rule{width:32px;height:1px;background:var(--gold);margin:.6rem auto}
+
+.lv2{display:flex;align-items:center;gap:.9rem}
+.lv2-mark{width:44px;height:44px;background:var(--forest);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);flex-shrink:0}
+.lv2-text{text-align:left}
+.lv2-name{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--forest);display:block;letter-spacing:.03em}
+.lv2-sub{font-family:'DM Mono',monospace;font-size:.46rem;color:var(--stone);letter-spacing:.28em;text-transform:uppercase;display:block;margin-top:.2rem}
+
+.lv3-mono{width:68px;height:68px;border:1.5px solid var(--forest);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;color:var(--forest)}
+.lv3-mono.inv{border-color:var(--white);color:var(--white)}
+.lv3-mono.gold{border-color:var(--gold);color:var(--gold)}
+
+.lv-reversed{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);display:block;letter-spacing:.04em}
+.lv-reversed-sub{font-family:'DM Mono',monospace;font-size:.47rem;color:rgba(255,255,255,.4);letter-spacing:.32em;text-transform:uppercase;margin-top:.4rem}
+.lv-rule-inv{width:28px;height:1px;background:var(--gold);margin:.5rem auto}
+
+.palette{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--warm);overflow:hidden}
+.sw{padding:2rem .9rem 1.2rem;display:flex;flex-direction:column;justify-content:flex-end;min-height:130px}
+.sw-name{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.25rem}
+.sw-hex{font-family:'DM Mono',monospace;font-size:.48rem;opacity:.55}
+.sw-role{font-family:'DM Mono',monospace;font-size:.43rem;opacity:.35;margin-top:.12rem;text-transform:uppercase;letter-spacing:.1em}
+
+.type-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--warm)}
+.type-card{background:var(--white);padding:2rem}
+.type-tag{font-family:'DM Mono',monospace;font-size:.5rem;color:var(--sage);letter-spacing:.28em;text-transform:uppercase;display:block;margin-bottom:1.2rem}
+.t-serif{font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--forest);line-height:1;font-weight:400}
+.t-serif-it{font-family:'Playfair Display',serif;font-size:1.8rem;font-style:italic;color:var(--forest-mid);line-height:1.2;font-weight:400;margin-top:.5rem}
+.t-sans{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:300;color:var(--stone);line-height:1.9;margin-top:.8rem}
+.t-mono{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--sage);line-height:1.7}
+.t-detail{font-family:'DM Mono',monospace;font-size:.5rem;color:var(--stone);line-height:1.9;margin-top:1rem;border-top:1px solid var(--warm);padding-top:.9rem}
+
+.collateral-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+
+.bc{width:100%;aspect-ratio:1.75;position:relative;overflow:hidden}
+.bc-front{background:var(--forest);display:flex;flex-direction:column;justify-content:space-between;padding:1.8rem 2rem}
+.bc-bg-w{position:absolute;right:-1.5rem;top:-1.5rem;width:160px;height:160px;border-radius:50%;background:var(--forest-mid);opacity:.5}
+.bc-logo{position:relative;z-index:2}
+.bc-logo-name{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);display:block;letter-spacing:.03em}
+.bc-logo-rule{width:22px;height:1px;background:var(--gold);margin:.45rem 0}
+.bc-logo-sub{font-family:'DM Mono',monospace;font-size:.44rem;color:rgba(255,255,255,.35);letter-spacing:.28em;text-transform:uppercase}
+.bc-contact{position:relative;z-index:2}
+.bc-name{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--white);font-style:italic;display:block;margin-bottom:.3rem}
+.bc-role{font-family:'DM Mono',monospace;font-size:.44rem;color:rgba(255,255,255,.4);letter-spacing:.18em;text-transform:uppercase}
+.bc-back{background:var(--cream);display:flex;align-items:center;justify-content:center;border:1px solid var(--warm)}
+.bc-back-content{text-align:center}
+.bc-back-initials{font-family:'Playfair Display',serif;font-size:3rem;color:var(--mint);font-weight:600;line-height:1}
+.bc-back-rule{width:28px;height:1px;background:var(--gold);margin:.7rem auto}
+.bc-back-url{font-family:'DM Mono',monospace;font-size:.5rem;color:var(--stone);letter-spacing:.2em;text-transform:uppercase}
+
+.letterhead{background:var(--white);border:1px solid var(--warm);padding:2rem}
+.lh-header{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:1.2rem;border-bottom:2px solid var(--forest);margin-bottom:1.5rem}
+.lh-logo-name{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--forest);display:block}
+.lh-logo-rule{width:22px;height:1px;background:var(--gold);margin:.35rem 0}
+.lh-logo-sub{font-family:'DM Mono',monospace;font-size:.44rem;color:var(--stone);letter-spacing:.25em;text-transform:uppercase}
+.lh-contact{text-align:right;font-family:'DM Mono',monospace;font-size:.5rem;color:var(--stone);line-height:2;letter-spacing:.08em}
+.lh-body{}
+.lh-date{font-family:'DM Mono',monospace;font-size:.52rem;color:var(--stone);letter-spacing:.12em;margin-bottom:1rem}
+.lh-text{font-size:.72rem;color:var(--ink);line-height:1.9;opacity:.6}
+.lh-footer{margin-top:1.5rem;padding-top:.8rem;border-top:1px solid var(--warm);display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:.44rem;color:var(--stone);letter-spacing:.06em}
+
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--warm)}
+.vc{background:var(--white);padding:1.8rem}
+.vc-accent{width:28px;height:3px;background:var(--forest);margin-bottom:1.1rem}
+.vc-adj{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--forest);margin-bottom:.8rem;font-style:italic}
+.vc-not{font-family:'DM Mono',monospace;font-size:.5rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.5rem}
+.vc-desc{font-size:.7rem;color:var(--stone);line-height:1.85}
+
+.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--warm)}
+.dd-card{background:var(--white);padding:1.8rem}
+.dd-head{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--warm)}
+.dd-icon{font-family:'DM Mono',monospace;font-size:.85rem;font-weight:400}
+.dd-icon.do{color:var(--forest-light)}
+.dd-icon.dn{color:#a03030}
+.dd-label{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--forest)}
+.dd-item{font-family:'DM Mono',monospace;font-size:.54rem;color:var(--stone);letter-spacing:.06em;padding:.42rem 0;border-bottom:1px solid var(--warm);display:flex;gap:.6rem;line-height:1.55}
+.dd-item:last-child{border-bottom:none}
+.dd-b.do{color:var(--forest-light)}
+.dd-b.dn{color:#a03030}
+
+footer{background:var(--forest);padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--white);letter-spacing:.03em}
+.f-logo span{color:var(--gold)}
+.f-meta{font-family:'DM Mono',monospace;font-size:.48rem;color:rgba(255,255,255,.3);text-align:right;line-height:2.1;letter-spacing:.12em;text-transform:uppercase}
+</style>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-leaf"></div>
+  <div class="header-leaf2"></div>
+  <div class="header-inner">
+    <div>
+      <span class="header-eyebrow">Markenidentität · Brand Identity · 2026</span>
+      <div class="header-logo">Wilhelm<br><span>Steuerberatung</span></div>
+      <div class="header-rule"></div>
+      <div class="header-tagline">Kompetenz · Vertrauen · Klarheit</div>
+    </div>
+    <div class="header-right">
+      <div class="header-initials">RW</div>
+      <div class="header-badge">Renate Wilhelm</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 LOGO SYSTEM -->
+<div class="section" style="background:var(--white)">
+  <div class="section-head">
+    <span class="section-num">01 —</span>
+    <span class="section-title">Logo System</span>
+  </div>
+  <div class="logo-grid">
+    <div class="logo-cell cream">
+      <div>
+        <div class="lv1">Wilhelm<br>Steuerberatung</div>
+        <div class="lv1-rule"></div>
+        <div class="lv1-sub">Renate Wilhelm</div>
+      </div>
+      <span class="lc-label">Primär · Hell</span>
+    </div>
+    <div class="logo-cell">
+      <div class="lv2">
+        <div class="lv2-mark">RW</div>
+        <div class="lv2-text">
+          <span class="lv2-name">Wilhelm</span>
+          <span class="lv2-sub">Steuerberatung</span>
+        </div>
+      </div>
+      <span class="lc-label">Horizontal · mit Marke</span>
+    </div>
+    <div class="logo-cell forest">
+      <div>
+        <div class="lv-reversed">Wilhelm<br>Steuerberatung</div>
+        <div class="lv-rule-inv"></div>
+        <div class="lv-reversed-sub">Renate Wilhelm</div>
+      </div>
+      <span class="lc-label">Primär · Dunkel</span>
+    </div>
+    <div class="logo-cell cream">
+      <div class="lv3-mono">RW</div>
+      <span class="lc-label">Monogramm · Waldgrün</span>
+    </div>
+    <div class="logo-cell">
+      <div class="lv3-mono gold">RW</div>
+      <span class="lc-label">Monogramm · Gold</span>
+    </div>
+    <div class="logo-cell forest">
+      <div class="lv3-mono inv">RW</div>
+      <span class="lc-label">Monogramm · Weiß</span>
+    </div>
+  </div>
+</div>
+
+<!-- 02 PALETTE -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">02 —</span>
+    <span class="section-title">Farbsystem</span>
+  </div>
+  <div class="palette">
+    <div class="sw" style="background:#1a3528">
+      <span class="sw-name" style="color:rgba(245,242,236,.45)">Waldgrün</span>
+      <span class="sw-hex" style="color:rgba(245,242,236,.22)">#1A3528</span>
+      <span class="sw-role" style="color:rgba(245,242,236,.16)">Primärfarbe</span>
+    </div>
+    <div class="sw" style="background:#2a5040">
+      <span class="sw-name" style="color:rgba(245,242,236,.45)">Moosgrün</span>
+      <span class="sw-hex" style="color:rgba(245,242,236,.22)">#2A5040</span>
+      <span class="sw-role" style="color:rgba(245,242,236,.16)">Sekundär</span>
+    </div>
+    <div class="sw" style="background:#7aab90">
+      <span class="sw-name" style="color:rgba(28,28,26,.55)">Salbei</span>
+      <span class="sw-hex" style="color:rgba(28,28,26,.32)">#7AAB90</span>
+      <span class="sw-role" style="color:rgba(28,28,26,.22)">Begleitton</span>
+    </div>
+    <div class="sw" style="background:#b8d8c8;border:1px solid rgba(0,0,0,.05)">
+      <span class="sw-name" style="color:rgba(28,28,26,.55)">Mint</span>
+      <span class="sw-hex" style="color:rgba(28,28,26,.32)">#B8D8C8</span>
+      <span class="sw-role" style="color:rgba(28,28,26,.22)">Fläche hell</span>
+    </div>
+    <div class="sw" style="background:#f5f2ec;border:1px solid rgba(0,0,0,.06)">
+      <span class="sw-name" style="color:rgba(28,28,26,.5)">Creme</span>
+      <span class="sw-hex" style="color:rgba(28,28,26,.3)">#F5F2EC</span>
+      <span class="sw-role" style="color:rgba(28,28,26,.2)">Hintergrund</span>
+    </div>
+    <div class="sw" style="background:#c8a96e">
+      <span class="sw-name" style="color:rgba(28,28,26,.6)">Gold</span>
+      <span class="sw-hex" style="color:rgba(28,28,26,.36)">#C8A96E</span>
+      <span class="sw-role" style="color:rgba(28,28,26,.24)">Akzent</span>
+    </div>
+  </div>
+  <p style="font-family:'DM Mono',monospace;font-size:.52rem;color:var(--stone);margin-top:1rem;line-height:2;letter-spacing:.07em">
+    Verde bosque como color primario — diferente a cualquier competidor del sector. El dorado aparece con moderación como único acento cálido. Nunca los seis colores juntos en una misma pieza.
+  </p>
+</div>
+
+<!-- 03 TYPOGRAPHY -->
+<div class="section" style="background:var(--white)">
+  <div class="section-head">
+    <span class="section-num">03 —</span>
+    <span class="section-title">Typografie</span>
+  </div>
+  <div class="type-grid">
+    <div class="type-card">
+      <span class="type-tag">Display · Playfair Display</span>
+      <div class="t-serif">Wilhelm</div>
+      <div class="t-serif-it">Ihre Steuern,<br>unsere Expertise.</div>
+      <div class="t-detail">
+        Playfair Display — Logo, Überschriften<br>
+        Seriös ohne steif zu wirken.<br>
+        Vertrauen durch Klassik — modern eingesetzt.<br><br>
+        Verwendet für: Briefkopf, Webseite, Kanzleischild.
+      </div>
+    </div>
+    <div class="type-card">
+      <span class="type-tag">Body · DM Sans</span>
+      <div class="t-sans">
+        Wilhelm Steuerberatung begleitet Privatpersonen, Selbstständige und kleine Unternehmen bei der jährlichen Steuererklärung — persönlich, kompetent und verständlich.
+      </div>
+      <div class="t-detail">
+        DM Sans Light — Fließtext, Website, Broschüren<br>
+        Modern, gut lesbar, kein generisches Arial.<br><br>
+        Verwendet für: Texte, Formulare, E-Mails.
+      </div>
+    </div>
+    <div class="type-card">
+      <span class="type-tag">Detail · DM Mono</span>
+      <div class="t-mono">
+        Steuernr. · 07/123/45678<br>
+        Finanzamt Offenburg<br>
+        USt-IdNr. · DE123456789<br>
+        Tel. · +49 781 000 0000
+      </div>
+      <div class="t-detail">
+        DM Mono — Zahlen, Referenzen, Labels<br>
+        Technische Daten wirken präzise.<br>
+        Behördensprache, aber mit Charakter.<br><br>
+        Verwendet für: Steuernummern, Fristen, Tabellen.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 COLLATERAL -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">04 —</span>
+    <span class="section-title">Anwendungen</span>
+  </div>
+  <div class="collateral-grid">
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="bc bc-front">
+        <div class="bc-bg-w"></div>
+        <div class="bc-logo">
+          <span class="bc-logo-name">Wilhelm Steuerberatung</span>
+          <div class="bc-logo-rule"></div>
+          <span class="bc-logo-sub">Steuerkanzlei · Offenburg</span>
+        </div>
+        <div class="bc-contact">
+          <span class="bc-name">Renate Wilhelm</span>
+          <span class="bc-role">Steuerberaterin</span>
+        </div>
+      </div>
+      <div class="bc bc-back">
+        <div class="bc-back-content">
+          <div class="bc-back-initials">RW</div>
+          <div class="bc-back-rule"></div>
+          <div class="bc-back-url">wilhelm-steuerberatung.de</div>
+        </div>
+      </div>
+    </div>
+    <div class="letterhead">
+      <div class="lh-header">
+        <div>
+          <span class="lh-logo-name">Wilhelm Steuerberatung</span>
+          <div class="lh-logo-rule"></div>
+          <span class="lh-logo-sub">Renate Wilhelm · Steuerberaterin</span>
+        </div>
+        <div class="lh-contact">
+          Hauptstraße 12 · 77652 Offenburg<br>
+          Tel. +49 781 000 0000<br>
+          info@wilhelm-steuerberatung.de<br>
+          wilhelm-steuerberatung.de
+        </div>
+      </div>
+      <div class="lh-body">
+        <div class="lh-date">Offenburg, 02. Mai 2026</div>
+        <div class="lh-text">
+          Sehr geehrte Damen und Herren,<br><br>
+          bezüglich Ihrer Steuererklärung für das Veranlagungsjahr 2025 teile ich Ihnen mit, dass alle erforderlichen Unterlagen eingegangen sind. Die Bearbeitung erfolgt zeitnah...
+        </div>
+      </div>
+      <div class="lh-footer">
+        <span>Steuer-Nr. 07/123/45678 · Finanzamt Offenburg</span>
+        <span>IBAN DE00 0000 0000 0000 0000 00</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 BRAND VOICE -->
+<div class="section" style="background:var(--white)">
+  <div class="section-head">
+    <span class="section-num">05 —</span>
+    <span class="section-title">Markenstimme</span>
+  </div>
+  <div class="voice-grid">
+    <div class="vc">
+      <div class="vc-accent"></div>
+      <div class="vc-adj">Klar</div>
+      <div class="vc-not">Nicht: kompliziert oder bürokratisch</div>
+      <div class="vc-desc">Steuerrecht ist komplex — die Kommunikation nicht. Renate erklärt, was der Mandant braucht. Keine unnötigen Fachbegriffe, kein Behördendeutsch.</div>
+    </div>
+    <div class="vc">
+      <div class="vc-accent"></div>
+      <div class="vc-adj">Persönlich</div>
+      <div class="vc-not">Nicht: unpersönlich oder kühl</div>
+      <div class="vc-desc">Kein anonymes Großbüro. Renate kennt ihre Mandanten. Kleine Kanzlei ist kein Nachteil — es ist das Alleinstellungsmerkmal.</div>
+    </div>
+    <div class="vc">
+      <div class="vc-accent"></div>
+      <div class="vc-adj">Verlässlich</div>
+      <div class="vc-not">Nicht: werbend oder übertrieben</div>
+      <div class="vc-desc">Keine leeren Versprechen. Klare Aussagen zu Fristen, Kosten und Ablauf. Das Finanzamt wartet nicht — und Renate auch nicht.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 DO / DON'T -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">06 —</span>
+    <span class="section-title">Do / Don't</span>
+  </div>
+  <div class="dd-grid">
+    <div class="dd-card">
+      <div class="dd-head"><span class="dd-icon do">[+]</span><span class="dd-label">Do</span></div>
+      <div class="dd-item"><span class="dd-b do">→</span><span>Waldgrün als dominante Farbe — immer auf hellem Hintergrund</span></div>
+      <div class="dd-item"><span class="dd-b do">→</span><span>Gold sparsam einsetzen — maximal ein Element pro Seite</span></div>
+      <div class="dd-item"><span class="dd-b do">→</span><span>Playfair Display für alle Überschriften — konsequent</span></div>
+      <div class="dd-item"><span class="dd-b do">→</span><span>Fotos: ruhig, natürlich, professionell — keine Stock-Klischees</span></div>
+      <div class="dd-item"><span class="dd-b do">→</span><span>Ton: direkt und menschlich — kein Bürokratendeutsch</span></div>
+    </div>
+    <div class="dd-card">
+      <div class="dd-head"><span class="dd-icon dn">[×]</span><span class="dd-label">Don't</span></div>
+      <div class="dd-item"><span class="dd-b dn">→</span><span>Kein Blau — das ist die Farbe aller anderen Steuerberater</span></div>
+      <div class="dd-item"><span class="dd-b dn">→</span><span>Keine Comic Sans, keine serifenlosen Systemschriften</span></div>
+      <div class="dd-item"><span class="dd-b dn">→</span><span>Kein Logo strecken, verzerren oder umfärben</span></div>
+      <div class="dd-item"><span class="dd-b dn">→</span><span>Keine Stock-Fotos mit Taschenrechnern und Aktenordnern</span></div>
+      <div class="dd-item"><span class="dd-b dn">→</span><span>Nicht alle sechs Farben gleichzeitig auf einer Fläche</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Wilhelm <span>Steuerberatung</span></div>
+  <div class="f-meta">
+    Markenidentität · 2026<br>
+    Konzept & Design — AM Studio · Offenburg
+  </div>
+</footer>

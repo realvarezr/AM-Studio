@@ -1032,6 +1032,155 @@ nav.scrolled {
 }
 
 /* ══════════════════════════════════════════
+   CONCEPT PROJECT
+══════════════════════════════════════════ */
+#concept-project {
+  background: var(--ink);
+  padding: 120px 56px;
+}
+#concept-project .section-title { color: var(--cream); }
+#concept-project .section-intro { color: var(--stone); }
+#concept-project .section-eyebrow { color: var(--terra); }
+#concept-project .section-eyebrow::before { background: var(--terra); }
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 64px;
+}
+
+.concept-card {
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 2px;
+  position: relative;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.concept-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+}
+
+.concept-card-header {
+  padding: 52px 40px 40px;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.concept-card--kuro .concept-card-header  { background: #0d0d0d; }
+.concept-card--wilhelm .concept-card-header { background: #1a3528; }
+
+.concept-bg-word {
+  position: absolute;
+  font-family: var(--ff-d);
+  font-size: 9rem;
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.05;
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+  user-select: none;
+  pointer-events: none;
+  color: #fff;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.concept-badge {
+  display: inline-block;
+  font-family: var(--ff-s);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid;
+  border-radius: 1px;
+  margin-bottom: 22px;
+  width: fit-content;
+}
+.concept-card--kuro .concept-badge {
+  color: rgba(180,40,40,0.9);
+  border-color: rgba(180,40,40,0.38);
+}
+.concept-card--wilhelm .concept-badge {
+  color: rgba(200,169,110,0.9);
+  border-color: rgba(200,169,110,0.38);
+}
+
+.concept-brand-name {
+  font-family: var(--ff-d);
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.concept-brand-sub {
+  font-family: var(--ff-s);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.32);
+}
+
+.concept-card-body {
+  padding: 26px 40px 30px;
+  background: var(--carbon);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.concept-card-desc {
+  font-family: var(--ff-s);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.65;
+}
+
+.concept-arrow {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  color: rgba(243,237,227,0.35);
+  flex-shrink: 0;
+  transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s;
+}
+.concept-card:hover .concept-arrow {
+  border-color: var(--terra);
+  color: var(--terra);
+  background: rgba(196,82,28,0.08);
+  transform: translateX(4px);
+}
+
+.concept-note {
+  text-align: center;
+  margin-top: 48px;
+}
+.concept-note p {
+  font-family: var(--ff-d);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--stone);
+}
+
+/* ══════════════════════════════════════════
    ABOUT
 ══════════════════════════════════════════ */
 #sobre-nosotros {
@@ -1555,9 +1704,10 @@ body.cookie-visible .wa-fab { bottom: 108px; }
     margin-bottom: 52px;
   }
 
-  #leistungen, #portfolio, #sobre-nosotros, #kontakt { padding: 80px 28px; }
+  #leistungen, #portfolio, #concept-project, #sobre-nosotros, #kontakt { padding: 80px 28px; }
 
   .services-grid { grid-template-columns: 1fr; gap: 2px; }
+  .concept-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 44px; }
   .werk-item { grid-template-columns: 56px 1fr auto; gap: 24px; padding: 32px 0; }
   .werk-num { font-size: 44px; }
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -1588,6 +1738,8 @@ body.cookie-visible .wa-fab { bottom: 108px; }
   }
   .kinetic-card { display: none; }
   .werk-item { grid-template-columns: 1fr auto; gap: 16px; padding: 28px 0; }
+  .concept-card-header { padding: 36px 24px 28px; }
+  .concept-card-body { padding: 20px 24px 22px; }
   .werk-num { display: none; }
   .service-index-row { grid-template-columns: 38px 1fr; gap: 14px; }
   .signal-track span { font-size: 9px; padding: 6px 10px; }

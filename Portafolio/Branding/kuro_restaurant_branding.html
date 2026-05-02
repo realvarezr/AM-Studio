@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Shippori+Mincho:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0d0d0d;
+  --ink2:#1a1a1a;
+  --stone:#3a3735;
+  --fog:#8a8480;
+  --sand:#c8c0b4;
+  --parch:#f0ebe3;
+  --warm:#f8f4ee;
+  --white:#ffffff;
+  --red:#8b1a1a;
+}
+body{
+  background:var(--warm);
+  color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  padding:0;
+  overflow-x:hidden;
+}
+
+/* ── HEADER ── */
+.brand-header{
+  background:var(--ink);
+  padding:4rem 3rem 3.5rem;
+  position:relative;
+  overflow:hidden;
+}
+.header-bg-kanji{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Shippori Mincho',serif;
+  font-size:20rem;
+  color:rgba(255,255,255,.025);
+  user-select:none;
+  pointer-events:none;
+  line-height:1;
+  white-space:nowrap;
+}
+.header-inner{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:3rem;
+}
+.header-eyebrow{
+  font-size:.6rem;
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  margin-bottom:1.5rem;
+  display:block;
+}
+.logo-main{
+  font-family:'Shippori Mincho',serif;
+  font-size:5.5rem;
+  color:var(--white);
+  line-height:.9;
+  letter-spacing:.08em;
+  font-weight:400;
+}
+.logo-sub{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;
+  font-style:italic;
+  color:rgba(255,255,255,.45);
+  letter-spacing:.3em;
+  margin-top:1rem;
+  font-weight:300;
+}
+.logo-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;
+  font-style:italic;
+  color:rgba(255,255,255,.6);
+  font-weight:300;
+  line-height:1.5;
+  text-align:right;
+  max-width:260px;
+}
+.logo-kanji-accent{
+  font-family:'Shippori Mincho',serif;
+  font-size:4rem;
+  color:rgba(255,255,255,.15);
+  display:block;
+  text-align:right;
+  margin-top:.5rem;
+}
+
+/* ── RED LINE ── */
+.red-rule{
+  height:2px;
+  background:var(--red);
+  width:60px;
+  margin:1.8rem 0;
+}
+
+/* ── SECTION WRAPPER ── */
+.brand-section{
+  padding:3.5rem 3rem;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+.brand-section:last-child{border-bottom:none}
+.section-eyebrow{
+  font-size:.56rem;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  color:var(--fog);
+  display:block;
+  margin-bottom:1.2rem;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;
+  font-weight:300;
+  line-height:1.1;
+  margin-bottom:2.5rem;
+}
+.section-title em{font-style:italic}
+
+/* ── LOGO VARIATIONS ── */
+.logo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:rgba(0,0,0,.08);
+  margin-top:2rem;
+}
+.logo-cell{
+  background:var(--white);
+  padding:2.5rem 2rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:.8rem;
+  min-height:180px;
+}
+.logo-cell.dark{background:var(--ink)}
+.logo-cell.parch{background:var(--parch)}
+.logo-cell-label{
+  font-size:.52rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--fog);
+  margin-top:auto;
+}
+.logo-cell.dark .logo-cell-label{color:rgba(255,255,255,.3)}
+
+/* Logo mark versions */
+.lv1-text{
+  font-family:'Shippori Mincho',serif;
+  font-size:3rem;
+  color:var(--ink);
+  letter-spacing:.12em;
+  line-height:1;
+}
+.lv1-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.75rem;
+  font-style:italic;
+  letter-spacing:.4em;
+  color:var(--fog);
+  text-transform:uppercase;
+}
+.lv2-wrapper{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+.lv2-mark{
+  width:44px;
+  height:44px;
+  border:1px solid var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Shippori Mincho',serif;
+  font-size:1.5rem;
+  color:var(--ink);
+  flex-shrink:0;
+}
+.lv2-text-block{}
+.lv2-name{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.4rem;
+  letter-spacing:.1em;
+  color:var(--ink);
+  display:block;
+}
+.lv2-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.65rem;
+  font-style:italic;
+  letter-spacing:.35em;
+  color:var(--fog);
+  display:block;
+  margin-top:.1rem;
+}
+/* Dark variants */
+.logo-cell.dark .lv1-text{color:var(--white)}
+.logo-cell.dark .lv1-sub{color:rgba(255,255,255,.4)}
+.logo-cell.dark .lv2-mark{border-color:rgba(255,255,255,.4);color:var(--white)}
+.logo-cell.dark .lv2-name{color:var(--white)}
+.logo-cell.dark .lv2-sub{color:rgba(255,255,255,.4)}
+
+/* Monogram */
+.monogram{
+  width:70px;height:70px;
+  border:1px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho',serif;
+  font-size:2rem;
+  color:var(--ink);
+  letter-spacing:.05em;
+}
+.monogram.inv{
+  border-color:var(--white);
+  background:transparent;
+  color:var(--white);
+}
+
+/* ── PALETTE ── */
+.palette-row{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:0;
+  border:1px solid rgba(0,0,0,.08);
+  overflow:hidden;
+  border-radius:2px;
+}
+.swatch-block{
+  padding:2rem 1.2rem 1.2rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:140px;
+}
+.swatch-name{
+  font-size:.55rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-top:auto;
+  margin-bottom:.25rem;
+}
+.swatch-hex{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.85rem;
+  opacity:.6;
+}
+.swatch-role{
+  font-size:.5rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  opacity:.5;
+  margin-top:.2rem;
+}
+
+/* ── TYPOGRAPHY ── */
+.type-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+}
+.type-card{
+  border:1px solid rgba(0,0,0,.08);
+  padding:2rem;
+  background:var(--white);
+}
+.type-label{
+  font-size:.52rem;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  color:var(--fog);
+  display:block;
+  margin-bottom:1.5rem;
+}
+.type-sample-display{
+  font-family:'Shippori Mincho',serif;
+  font-size:3.5rem;
+  color:var(--ink);
+  line-height:.9;
+  letter-spacing:.06em;
+}
+.type-sample-serif{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;
+  font-style:italic;
+  font-weight:300;
+  color:var(--ink);
+  line-height:1.1;
+}
+.type-sample-sans{
+  font-family:'DM Sans',sans-serif;
+  font-size:.82rem;
+  font-weight:300;
+  color:var(--stone);
+  line-height:1.9;
+  margin-top:1rem;
+}
+.type-detail{
+  font-size:.58rem;
+  color:var(--fog);
+  letter-spacing:.06em;
+  margin-top:1rem;
+  line-height:1.8;
+}
+.type-alphabet{
+  font-family:'Shippori Mincho',serif;
+  font-size:1rem;
+  color:rgba(0,0,0,.2);
+  letter-spacing:.15em;
+  margin-top:1rem;
+}
+
+/* ── COLLATERAL SECTION ── */
+.collateral-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+  margin-top:2rem;
+}
+
+/* Business card */
+.bc-wrapper{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+.bc{
+  width:100%;
+  aspect-ratio:1.75;
+  position:relative;
+  overflow:hidden;
+}
+.bc-front{
+  background:var(--ink);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:1.8rem 2rem;
+}
+.bc-kanji-bg{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Shippori Mincho',serif;
+  font-size:8rem;
+  color:rgba(255,255,255,.04);
+  user-select:none;
+  pointer-events:none;
+}
+.bc-logo-area{
+  position:relative;z-index:2;
+}
+.bc-logo-small{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.6rem;
+  color:var(--white);
+  letter-spacing:.1em;
+  display:block;
+}
+.bc-logo-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.55rem;
+  font-style:italic;
+  letter-spacing:.35em;
+  color:rgba(255,255,255,.35);
+}
+.bc-rule{
+  width:30px;
+  height:1px;
+  background:var(--red);
+  position:relative;z-index:2;
+}
+.bc-contact{
+  position:relative;z-index:2;
+}
+.bc-name{
+  font-size:.7rem;
+  font-weight:400;
+  color:var(--white);
+  letter-spacing:.08em;
+  display:block;
+  margin-bottom:.4rem;
+}
+.bc-role{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.65rem;
+  font-style:italic;
+  color:rgba(255,255,255,.4);
+  display:block;
+  letter-spacing:.1em;
+}
+.bc-back{
+  background:var(--parch);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.bc-back-mono{
+  font-family:'Shippori Mincho',serif;
+  font-size:4rem;
+  color:rgba(0,0,0,.08);
+  letter-spacing:.1em;
+}
+.bc-back-center{
+  text-align:center;
+}
+.bc-back-wordmark{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.4rem;
+  color:var(--stone);
+  letter-spacing:.15em;
+  display:block;
+}
+.bc-back-line{
+  width:30px;
+  height:1px;
+  background:var(--red);
+  margin:.6rem auto;
+}
+.bc-back-url{
+  font-size:.55rem;
+  letter-spacing:.25em;
+  color:var(--fog);
+  text-transform:uppercase;
+}
+
+/* Menu preview */
+.menu-preview{
+  background:var(--white);
+  border:1px solid rgba(0,0,0,.08);
+  padding:2rem;
+  display:flex;
+  flex-direction:column;
+}
+.menu-header{
+  text-align:center;
+  padding-bottom:1.5rem;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  margin-bottom:1.5rem;
+}
+.menu-logo{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.8rem;
+  letter-spacing:.12em;
+  color:var(--ink);
+}
+.menu-subtitle{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.7rem;
+  font-style:italic;
+  letter-spacing:.35em;
+  color:var(--fog);
+  margin-top:.3rem;
+}
+.menu-rule{
+  width:24px;
+  height:1px;
+  background:var(--red);
+  margin:.8rem auto 0;
+}
+.menu-cat-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--ink);
+  margin-bottom:.8rem;
+}
+.menu-item{
+  display:flex;
+  justify-content:space-between;
+  padding:.4rem 0;
+  border-bottom:1px solid rgba(0,0,0,.04);
+}
+.menu-item-name{font-size:.72rem;color:var(--stone)}
+.menu-item-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.85rem;
+  color:var(--ink);
+}
+
+/* Stamp / Seal */
+.seal-wrapper{
+  background:var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:3rem;
+  border:1px solid rgba(0,0,0,.08);
+}
+.seal{
+  width:120px;
+  height:120px;
+  border:2px solid var(--red);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:1rem;
+  position:relative;
+}
+.seal::before{
+  content:'';
+  position:absolute;
+  inset:4px;
+  border:1px solid rgba(139,26,26,.4);
+}
+.seal-kanji{
+  font-family:'Shippori Mincho',serif;
+  font-size:2.8rem;
+  color:var(--red);
+  line-height:1;
+}
+.seal-latin{
+  font-size:.42rem;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+  margin-top:.4rem;
+}
+.seal-year{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.75rem;
+  font-style:italic;
+  color:rgba(255,255,255,.2);
+  margin-top:.3rem;
+}
+
+/* ── VOICE SECTION ── */
+.voice-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  margin-top:2rem;
+}
+.voice-card{
+  border-top:2px solid var(--ink);
+  padding-top:1.5rem;
+}
+.voice-adj{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;
+  font-style:italic;
+  color:var(--ink);
+  margin-bottom:.8rem;
+}
+.voice-not{
+  font-size:.62rem;
+  letter-spacing:.1em;
+  color:var(--red);
+  margin-bottom:.3rem;
+}
+.voice-desc{
+  font-size:.72rem;
+  color:var(--fog);
+  line-height:1.8;
+}
+
+/* ── DO / DON'T ── */
+.dd-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+  margin-top:2rem;
+}
+.dd-card{
+  padding:1.8rem;
+  border:1px solid rgba(0,0,0,.08);
+}
+.dd-label{
+  font-size:.52rem;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:1.2rem;
+  font-weight:500;
+}
+.dd-card.do .dd-label{color:#2d6a4f}
+.dd-card.dont .dd-label{color:var(--red)}
+.dd-item{
+  font-size:.75rem;
+  color:var(--stone);
+  line-height:1.7;
+  padding:.35rem 0;
+  border-bottom:1px solid rgba(0,0,0,.05);
+  display:flex;
+  gap:.7rem;
+  align-items:baseline;
+}
+.dd-item:last-child{border-bottom:none}
+.dd-item span:first-child{
+  font-size:.8rem;
+  flex-shrink:0;
+}
+
+/* ── FOOTER CREDIT ── */
+.brand-footer{
+  background:var(--ink);
+  padding:1.8rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand-footer-logo{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.2rem;
+  color:rgba(255,255,255,.5);
+  letter-spacing:.12em;
+}
+.brand-footer-meta{
+  font-size:.52rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.2);
+  text-align:right;
+  line-height:1.8;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER HERO -->
+<div class="brand-header">
+  <div class="header-bg-kanji">黒</div>
+  <div class="header-inner">
+    <div>
+      <span class="header-eyebrow">Brand Identity System · 2026</span>
+      <div class="logo-main">KURO</div>
+      <div class="red-rule"></div>
+      <span class="logo-sub">Omakase · Japanische Küche · Offenburg</span>
+    </div>
+    <div>
+      <div class="logo-tagline">Stille.<br>Präzision.<br><em>Genuss.</em></div>
+      <span class="logo-kanji-accent">黒</span>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO VARIATIONS -->
+<div class="brand-section" style="background:var(--warm)">
+  <span class="section-eyebrow">01 — Wortmarke & Variationen</span>
+  <div class="section-title">Logo<em> System</em></div>
+
+  <div class="logo-grid">
+    <!-- Wordmark light -->
+    <div class="logo-cell parch">
+      <div style="text-align:center">
+        <div class="lv1-text">KURO</div>
+        <div style="width:30px;height:1px;background:var(--red);margin:.6rem auto"></div>
+        <div class="lv1-sub">Omakase</div>
+      </div>
+      <span class="logo-cell-label">Primär · Hell</span>
+    </div>
+    <!-- Wordmark + mark -->
+    <div class="logo-cell">
+      <div class="lv2-wrapper">
+        <div class="lv2-mark">黒</div>
+        <div class="lv2-text-block">
+          <span class="lv2-name">KURO</span>
+          <span class="lv2-sub">Japanische Küche</span>
+        </div>
+      </div>
+      <span class="logo-cell-label">Horizontal · mit Kanji</span>
+    </div>
+    <!-- Dark -->
+    <div class="logo-cell dark">
+      <div style="text-align:center">
+        <div class="lv1-text">KURO</div>
+        <div style="width:30px;height:1px;background:var(--red);margin:.6rem auto"></div>
+        <div class="lv1-sub">Omakase</div>
+      </div>
+      <span class="logo-cell-label">Primär · Dunkel</span>
+    </div>
+    <!-- Monogram -->
+    <div class="logo-cell parch">
+      <div class="monogram">黒</div>
+      <span class="logo-cell-label">Monogramm · Hell</span>
+    </div>
+    <!-- Seal / Stempel -->
+    <div class="logo-cell" style="background:var(--sand)">
+      <div style="display:flex;align-items:center;gap:1.5rem">
+        <div style="text-align:center">
+          <div style="font-family:'Shippori Mincho',serif;font-size:2rem;color:var(--ink);letter-spacing:.06em">KURO</div>
+          <div style="font-size:.48rem;letter-spacing:.4em;text-transform:uppercase;color:var(--stone);margin-top:.3rem">2024</div>
+        </div>
+      </div>
+      <span class="logo-cell-label">Compact · Neutral</span>
+    </div>
+    <!-- Dark monogram -->
+    <div class="logo-cell dark">
+      <div class="monogram inv">黒</div>
+      <span class="logo-cell-label">Monogramm · Dunkel</span>
+    </div>
+  </div>
+</div>
+
+<!-- PALETTE -->
+<div class="brand-section" style="background:var(--white)">
+  <span class="section-eyebrow">02 — Farbpalette</span>
+  <div class="section-title">Farb<em>system</em></div>
+
+  <div class="palette-row">
+    <div class="swatch-block" style="background:#0d0d0d">
+      <span class="swatch-name" style="color:rgba(255,255,255,.5)">Sumi</span>
+      <span class="swatch-hex" style="color:rgba(255,255,255,.25)">#0D0D0D</span>
+      <span class="swatch-role" style="color:rgba(255,255,255,.25)">Primär</span>
+    </div>
+    <div class="swatch-block" style="background:#3a3735">
+      <span class="swatch-name" style="color:rgba(255,255,255,.45)">Ishi</span>
+      <span class="swatch-hex" style="color:rgba(255,255,255,.2)">#3A3735</span>
+      <span class="swatch-role" style="color:rgba(255,255,255,.2)">Sekundär</span>
+    </div>
+    <div class="swatch-block" style="background:#8a8480">
+      <span class="swatch-name" style="color:rgba(255,255,255,.6)">Kiri</span>
+      <span class="swatch-hex" style="color:rgba(255,255,255,.35)">#8A8480</span>
+      <span class="swatch-role" style="color:rgba(255,255,255,.3)">Begleitton</span>
+    </div>
+    <div class="swatch-block" style="background:#f0ebe3;border:1px solid rgba(0,0,0,.06)">
+      <span class="swatch-name" style="color:var(--stone)">Washi</span>
+      <span class="swatch-hex" style="color:var(--fog)">#F0EBE3</span>
+      <span class="swatch-role" style="color:var(--fog)">Hintergrund</span>
+    </div>
+    <div class="swatch-block" style="background:#c8c0b4;border:1px solid rgba(0,0,0,.05)">
+      <span class="swatch-name" style="color:var(--stone)">Suna</span>
+      <span class="swatch-hex" style="color:var(--fog)">#C8C0B4</span>
+      <span class="swatch-role" style="color:var(--fog)">Akzent hell</span>
+    </div>
+    <div class="swatch-block" style="background:#8b1a1a">
+      <span class="swatch-name" style="color:rgba(255,255,255,.5)">Beni</span>
+      <span class="swatch-hex" style="color:rgba(255,255,255,.25)">#8B1A1A</span>
+      <span class="swatch-role" style="color:rgba(255,255,255,.25)">Akzentfarbe</span>
+    </div>
+  </div>
+
+  <p style="font-size:.65rem;color:var(--fog);margin-top:1.2rem;letter-spacing:.06em;line-height:1.8">
+    Jede Farbe trägt einen japanischen Namen — Sumi (Tinte), Ishi (Stein), Kiri (Nebel), Washi (Papier), Suna (Sand), Beni (Lackschwarz-Rot). Das Rot erscheint sparsam — als einziger Kontrastpunkt im System.
+  </p>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="brand-section" style="background:var(--parch)">
+  <span class="section-eyebrow">03 — Typografie</span>
+  <div class="section-title">Schrift<em>system</em></div>
+
+  <div class="type-grid">
+    <div class="type-card">
+      <span class="type-label">Display · Shippori Mincho</span>
+      <div class="type-sample-display">KURO<br>黒</div>
+      <div class="type-alphabet">A B C D E F G H I J K L M N</div>
+      <div class="type-detail">
+        Shippori Mincho — Display & Logo<br>
+        Japanische Mincho-Schrift mit lateinischen Buchstaben.<br>
+        Wirkt edel, präzise und unverwechselbar.
+      </div>
+    </div>
+    <div class="type-card">
+      <span class="type-label">Headline · Cormorant Garamond</span>
+      <div class="type-sample-serif">Stille Perfektion<br><em>im Detail.</em></div>
+      <div class="type-sample-sans">
+        DM Sans Light — Fließtext und UI.<br>
+        Sauber, modern, nicht generisch.
+      </div>
+      <div class="type-detail">
+        Cormorant Garamond Italic — Überschriften<br>
+        DM Sans 300 — Bodycopy & Interface<br>
+        Drei Ebenen. Klare Hierarchie. Null Kompromisse.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COLLATERAL -->
+<div class="brand-section" style="background:var(--warm)">
+  <span class="section-eyebrow">04 — Anwendungen</span>
+  <div class="section-title">Brand<em> Collateral</em></div>
+
+  <div class="collateral-grid">
+    <!-- Business card -->
+    <div class="bc-wrapper">
+      <div class="bc bc-front">
+        <div class="bc-kanji-bg">黒</div>
+        <div class="bc-logo-area">
+          <span class="bc-logo-small">KURO</span>
+          <span class="bc-logo-sub">Omakase · Offenburg</span>
+        </div>
+        <div class="bc-rule"></div>
+        <div class="bc-contact">
+          <span class="bc-name">Takahiro Mori</span>
+          <span class="bc-role">Head Chef & Inhaber</span>
+        </div>
+      </div>
+      <div class="bc bc-back">
+        <div class="bc-back-center">
+          <span class="bc-back-wordmark">KURO</span>
+          <div class="bc-back-line"></div>
+          <span class="bc-back-url">kuro-offenburg.de</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu preview + Seal -->
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <div class="menu-preview">
+        <div class="menu-header">
+          <div class="menu-logo">KURO</div>
+          <div class="menu-subtitle">Omakase Menü</div>
+          <div class="menu-rule"></div>
+        </div>
+        <div class="menu-cat-title">Heute Abend</div>
+        <div class="menu-item"><span class="menu-item-name">Misoshiru — Wakame, Tofu, Dashi</span><span class="menu-item-price">—</span></div>
+        <div class="menu-item"><span class="menu-item-name">Nigiri · Lachs, Gelbflossenthun</span><span class="menu-item-price">—</span></div>
+        <div class="menu-item"><span class="menu-item-name">Wagyu · A5 · Schwarzwälder Kräuter</span><span class="menu-item-price">—</span></div>
+        <div class="menu-item"><span class="menu-item-name">Matcha Panna Cotta</span><span class="menu-item-price">—</span></div>
+        <p style="font-size:.5rem;color:var(--fog);margin-top:1rem;letter-spacing:.15em;text-transform:uppercase">Preise täglich — Omakase nach Saison</p>
+      </div>
+
+      <div class="seal-wrapper">
+        <div style="display:flex;align-items:center;gap:2.5rem">
+          <div class="seal">
+            <span class="seal-kanji">黒</span>
+            <span class="seal-latin">Kuro</span>
+            <span class="seal-year">Est. 2024</span>
+          </div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">Qualitätssiegel &<br>Stempelmarke</div>
+            <div style="font-size:.55rem;color:rgba(255,255,255,.25);letter-spacing:.15em;text-transform:uppercase;margin-top:.6rem">Verwendung auf Verpackung,<br>Bestätigung & Menü</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND VOICE -->
+<div class="brand-section" style="background:var(--white)">
+  <span class="section-eyebrow">05 — Markenstimme</span>
+  <div class="section-title">Ton &<em> Sprache</em></div>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="voice-adj">Präzise</div>
+      <div class="voice-not">Nicht: technisch</div>
+      <div class="voice-desc">Jedes Wort sitzt. Keine Füllsätze. Die Karte hat vier Gerichte — nicht vierzig.</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-adj">Zurückhaltend</div>
+      <div class="voice-not">Nicht: kalt</div>
+      <div class="voice-desc">Kuro spricht leise. Wer zuhört, versteht alles. Kein Marketing-Lärm.</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-adj">Geerdet</div>
+      <div class="voice-not">Nicht: elitär</div>
+      <div class="voice-desc">Japanische Gastlichkeit — Omotenashi. Der Gast steht im Mittelpunkt. Immer.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DO / DON'T -->
+<div class="brand-section" style="background:var(--parch)">
+  <span class="section-eyebrow">06 — Markenkonsistenz</span>
+  <div class="section-title">Do &<em> Don't</em></div>
+
+  <div class="dd-grid">
+    <div class="dd-card do">
+      <span class="dd-label">✓ Do</span>
+      <div class="dd-item"><span>→</span><span>Großschreibung KURO in Shippori Mincho</span></div>
+      <div class="dd-item"><span>→</span><span>Rot (Beni) sparsam — max. ein Element pro Fläche</span></div>
+      <div class="dd-item"><span>→</span><span>Viel Weißraum, klare Hierarchie</span></div>
+      <div class="dd-item"><span>→</span><span>Japanische Namen für Farben und Gerichte beibehalten</span></div>
+      <div class="dd-item"><span>→</span><span>Fotos: minimaler Hintergrund, natürliches Licht</span></div>
+    </div>
+    <div class="dd-card dont">
+      <span class="dd-label">✗ Don't</span>
+      <div class="dd-item"><span>→</span><span>Kein Logo-Stretching oder Farbänderung</span></div>
+      <div class="dd-item"><span>→</span><span>Kein Rot als Hauptfarbe verwenden</span></div>
+      <div class="dd-item"><span>→</span><span>Keine Comic Sans, Papyrus oder System-Fonts</span></div>
+      <div class="dd-item"><span>→</span><span>Keine fröhlichen Emojis in offiziellen Texten</span></div>
+      <div class="dd-item"><span>→</span><span>Keine überladenen Layouts — Stille ist das Design</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="brand-footer">
+  <div class="brand-footer-logo">KURO</div>
+  <div class="brand-footer-meta">
+    Brand Identity System · 2026<br>
+    Konzept & Design — AM Studio
+  </div>
+</div>
+
+</body>
+</html>

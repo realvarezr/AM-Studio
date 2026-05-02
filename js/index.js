@@ -188,7 +188,7 @@ const PROJECTS = {
       de: [{n:'1',l:'Website für mehrere Standorte'},{n:'100%',l:'Mobile-first Design'}],
       es: [{n:'1',l:'Sitio web multi-sede'},{n:'100%',l:'Diseño mobile-first'}]
     },
-    image: 'portafolio/Cengiz Gastro Capture.png',
+    image: 'Portafolio/Web Sites/Cengiz Gastro Capture.png',
     url: 'https://cengiz-gastro.de'
   },
   jokili: {
@@ -211,7 +211,7 @@ const PROJECTS = {
       de: [{n:'1',l:'Maßgeschneiderte Plattform'},{n:'2',l:'Sprachen unterstützt'}],
       es: [{n:'1',l:'Plataforma a medida'},{n:'2',l:'Idiomas soportados'}]
     },
-    image: 'portafolio/Tovarerjokili Capture.png',
+    image: 'Portafolio/Web Sites/Tovarerjokili Capture.png',
     url: 'https://tovarerjokili.com'
   },
   am: {
@@ -234,7 +234,7 @@ const PROJECTS = {
       de: [{n:'3',l:'Sprachen ohne Aufpreis'},{n:'100%',l:'Responsive Design'}],
       es: [{n:'3',l:'Idiomas sin costo extra'},{n:'100%',l:'Diseño responsive'}]
     },
-    image: 'portafolio/AM Solutions Capture.png',
+    image: 'Portafolio/Web Sites/AM Solutions Capture.png',
     url: 'https://am-itsolutions.de'
   },
   loadedfries: {
@@ -257,7 +257,7 @@ const PROJECTS = {
       de: [{n:'7',l:'Produkte klar kommuniziert'},{n:'2',l:'Formate — Print & Digital'}],
       es: [{n:'7',l:'Productos comunicados'},{n:'2',l:'Formatos — Print & Digital'}]
     },
-    image: 'portafolio/Loaded_Fries_G&G@300x.png',
+    image: 'Portafolio/Banner and Flyers/Loaded_Fries_G&G@300x.png',
     url: null
   },
   kindergeburtstag: {
@@ -280,7 +280,7 @@ const PROJECTS = {
       de: [{n:'1',l:'Druckfertige Vorlage'},{n:'2',l:'Versionen — Print & Digital'}],
       es: [{n:'1',l:'Plantilla lista para imprimir'},{n:'2',l:'Versiones — Print & Digital'}]
     },
-    image: 'portafolio/Kindergeburstag_A3_QF_1.png',
+    image: 'Portafolio/Banner and Flyers/Kindergeburstag_A3_QF_1.png',
     url: null
   },
   grillabend: {
@@ -303,7 +303,7 @@ const PROJECTS = {
       de: [{n:'1',l:'Fertige Druckvorlage'},{n:'100%',l:'Individuell gestaltet'}],
       es: [{n:'1',l:'Plantilla terminada'},{n:'100%',l:'Diseño personalizado'}]
     },
-    image: 'portafolio/Grill Abend korrektur_Mesa de trabajo 1.jpg',
+    image: 'Portafolio/Banner and Flyers/Grill Abend korrektur_Mesa de trabajo 1.jpg',
     url: null
   }
 };

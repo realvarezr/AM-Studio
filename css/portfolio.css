@@ -594,6 +594,180 @@ nav {
   background: radial-gradient(circle, rgba(196,82,28,0.18), transparent 70%);
 }
 
+/* ── CONCEPT PROJECT ─────────────── */
+.concept-section {
+  background: var(--ink);
+  padding: 96px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.concept-section::before {
+  content: 'Concept';
+  position: absolute;
+  font-family: var(--ff-d);
+  font-size: 18vw;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.018);
+  top: 50%; right: -2vw;
+  transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.concept-header {
+  margin-bottom: 56px;
+}
+.concept-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 18px;
+}
+.concept-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--terra);
+}
+.concept-title {
+  font-family: var(--ff-d);
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.concept-title strong {
+  font-weight: 600;
+}
+.concept-desc {
+  font-size: 14px;
+  color: var(--stone);
+  max-width: 520px;
+  line-height: 1.75;
+}
+.concept-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.cp-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.45s var(--ease);
+}
+.cp-card:hover { transform: translateY(-5px); }
+.cp-header {
+  padding: 52px 44px 40px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+.cp-card--kuro .cp-header  { background: #0d0d0d; }
+.cp-card--wilhelm .cp-header { background: #1a3528; }
+.cp-bg-deco {
+  position: absolute;
+  font-family: var(--ff-d);
+  font-size: 11rem;
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.045;
+  top: 50%; right: -6px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
+  color: #fff;
+  white-space: nowrap;
+  line-height: 1;
+}
+.cp-badge {
+  display: inline-block;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+.cp-card--kuro .cp-badge   { color: #c84040; border-color: rgba(200,64,64,0.35); }
+.cp-card--wilhelm .cp-badge { color: #c8a96e; border-color: rgba(200,169,110,0.35); }
+.cp-card--voltwerk .cp-header { background: #0a0c0f; }
+.cp-card--voltwerk .cp-badge  { color: #00d97e; border-color: rgba(0,217,126,0.35); }
+.cp-card--full { grid-column: 1 / -1; }
+.cp-card--full .cp-header { min-height: 300px; }
+.cp-card--full .cp-bg-deco { font-size: 8rem; opacity: 0.03; }
+.cp-brand {
+  font-family: var(--ff-d);
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.cp-sub {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+}
+.cp-body {
+  background: var(--carbon);
+  padding: 24px 44px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.cp-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.7;
+}
+.cp-arrow {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(243,237,227,0.3);
+  flex-shrink: 0;
+  transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.3s;
+}
+.cp-card:hover .cp-arrow {
+  border-color: var(--terra);
+  color: var(--terra);
+  background: rgba(196,82,28,0.1);
+  transform: translateX(4px);
+}
+.concept-disclaimer {
+  margin-top: 28px;
+  text-align: center;
+  font-family: var(--ff-d);
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(138,131,122,0.5);
+}
+
 /* ── WEITERE ARBEITEN ─────────────── */
 .weitere-section { background: var(--carbon); padding: 80px; }
 .weitere-header {

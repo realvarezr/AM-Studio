@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VOLTWERK — Spezialwerkstatt für Elektro- & Hybridfahrzeuge · Ortenau</title>
+<meta name="description" content="Unabhängige Fachwerkstatt für Elektro- und Hybridfahrzeuge in der Ortenau. HV-zertifiziert, herstellerunabhängig, transparente Preise. Tesla, ID, e-tron, EQ, Polestar."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+<!-- Schema LocalBusiness / AutoRepair -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "VOLTWERK",
+  "description": "Spezialwerkstatt für Elektro- und Hybridfahrzeuge in der Ortenau",
+  "image": "https://voltwerk.de/og.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Musterstraße 1",
+    "addressLocality": "Ortenau",
+    "postalCode": "77XXX",
+    "addressCountry": "DE"
+  },
+  "telephone": "+49 000 0000000",
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"13:00"}
+  ],
+  "priceRange": "€€"
+}
+</script>
+
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:        #0a0c0f;       /* Antrazit base */
+  --bg-2:      #0e1116;       /* Surface */
+  --bg-3:      #141821;       /* Card */
+  --line:      #1f2530;       /* Borde */
+  --line-hi:   #2c3340;       /* Borde hover */
+  --text:      #e8eaed;       /* Texto principal */
+  --text-2:    #9aa3ad;       /* Texto secundario */
+  --text-3:    #5d6470;       /* Texto terciario */
+  --accent:    #00d97e;       /* Verde EV — energía limpia */
+  --accent-2:  #00b368;
+  --warn:      #ff6b35;       /* Acento naranja para urgencia */
+  --grid:      rgba(255,255,255,0.025);
+}
+
+html { scroll-behavior:smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Tech grid background */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.6), transparent 70%);
+}
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 1.1rem 2.5rem;
+  background: rgba(10,12,15,0.85);
+  backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display:flex; align-items:center; gap:.7rem; text-decoration:none; color:var(--text); }
+.brand-mark {
+  width: 28px; height: 28px;
+  display:flex; align-items:center; justify-content:center;
+  border: 1px solid var(--accent);
+  position:relative;
+}
+.brand-mark::before {
+  content:''; position:absolute; inset:3px;
+  background: var(--accent);
+  clip-path: polygon(60% 0, 100% 0, 40% 50%, 100% 50%, 0 100%, 60% 50%, 0 50%);
+}
+.brand-name {
+  font-family:'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: .95rem;
+  letter-spacing: .22em;
+}
+.brand-name .accent { color: var(--accent); }
+.brand-tag {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .58rem;
+  color: var(--text-3);
+  letter-spacing: .15em;
+  margin-top: 1px;
+  text-transform: uppercase;
+}
+.nav-right { display:flex; align-items:center; gap:2rem; }
+.nav-links { display:flex; gap: 1.8rem; list-style:none; }
+.nav-links a {
+  color: var(--text-2); text-decoration:none;
+  font-size: .72rem; letter-spacing: .12em;
+  text-transform: uppercase; font-weight: 500;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-phone {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .72rem;
+  color: var(--accent);
+  text-decoration:none;
+  padding: .55rem .9rem;
+  border: 1px solid var(--accent);
+  transition: all .2s;
+}
+.nav-phone:hover { background: var(--accent); color: var(--bg); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  padding: 8rem 2.5rem 4rem;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+.hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.hero-status {
+  display: inline-flex; align-items:center; gap:.6rem;
+  font-family:'JetBrains Mono', monospace;
+  font-size: .68rem;
+  color: var(--text-2);
+  letter-spacing: .14em;
+  margin-bottom: 2.5rem;
+  padding: .45rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  width: fit-content;
+}
+.status-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 12px var(--accent);
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+.hero-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 200;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+.hero-title strong {
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-2);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
+
+.btn {
+  display: inline-flex; align-items:center; gap:.6rem;
+  padding: 1rem 1.8rem;
+  font-family:'Manrope', sans-serif;
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all .25s ease;
+  position: relative;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--accent-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,217,126,0.25);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line-hi);
+}
+.btn-ghost:hover {
+  border-color: var(--text-2);
+  background: var(--bg-3);
+}
+.btn-arrow { transition: transform .25s; }
+.btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* Hero visual: HV diagnostic panel */
+.hv-panel {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 1.8rem;
+  position: relative;
+  font-family:'JetBrains Mono', monospace;
+  font-size: .75rem;
+}
+.hv-panel::before {
+  content:''; position:absolute; top:-1px; left:-1px; right:-1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.hv-header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding-bottom: 1rem; margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--line);
+}
+.hv-title { color: var(--text); font-weight: 600; letter-spacing:.1em; }
+.hv-id { color: var(--text-3); font-size: .65rem; }
+.hv-row {
+  display:flex; justify-content:space-between;
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.hv-row:last-of-type { border-bottom: none; }
+.hv-label { color: var(--text-3); font-size: .68rem; }
+.hv-value { color: var(--text); font-weight: 500; }
+.hv-value.good { color: var(--accent); }
+.hv-value.warn { color: var(--warn); }
+.hv-bar {
+  height: 4px;
+  background: var(--bg-3);
+  margin-top: 1.2rem;
+  overflow:hidden;
+  position: relative;
+}
+.hv-bar-fill {
+  height: 100%;
+  width: 87%;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  position:relative;
+}
+.hv-bar-fill::after {
+  content:''; position:absolute; right:0; top:0; bottom:0;
+  width: 4px; background: var(--text);
+  box-shadow: 0 0 8px var(--accent);
+}
+.hv-foot {
+  margin-top: 1rem;
+  font-size: .62rem;
+  color: var(--text-3);
+  display:flex; justify-content:space-between;
+}
+
+/* ── TRUST STRIP ── */
+.trust {
+  padding: 2rem 2.5rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+  position: relative; z-index:1;
+}
+.trust-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.trust-label {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .65rem;
+  color: var(--text-3);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.trust-brands {
+  display:flex; gap: 3rem; flex-wrap: wrap;
+  font-family:'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: .15em;
+  color: var(--text-2);
+}
+.trust-brands span { transition: color .2s; cursor: default; }
+.trust-brands span:hover { color: var(--accent); }
+
+/* ── SECTIONS ── */
+section { padding: 7rem 2.5rem; position: relative; z-index: 1; }
+.section-inner { max-width: 1280px; margin: 0 auto; }
+.section-head { margin-bottom: 4rem; max-width: 720px; }
+.section-tag {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:'JetBrains Mono', monospace;
+  font-size: .68rem;
+  color: var(--accent);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.section-tag::before {
+  content:''; width: 24px; height:1px; background: var(--accent);
+}
+.section-title {
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 200;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+}
+.section-title strong { font-weight: 700; }
+.section-lead {
+  font-size: 1rem;
+  color: var(--text-2);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* ── SERVICES ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.service {
+  background: var(--bg);
+  padding: 2.5rem 2rem;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: background .25s;
+  min-height: 320px;
+}
+.service:hover { background: var(--bg-2); }
+.service-num {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .68rem;
+  color: var(--text-3);
+  margin-bottom: 2rem;
+  letter-spacing: .14em;
+}
+.service-icon {
+  width: 32px; height: 32px;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+}
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: .8rem;
+  letter-spacing: -0.01em;
+}
+.service-desc {
+  font-size: .88rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+.service-meta {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .68rem;
+  color: var(--text-3);
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between;
+}
+.service-meta .price { color: var(--accent); }
+
+/* ── METHOD (process) ── */
+.method-bg {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+  position: relative;
+}
+.method-grid::before {
+  content:''; position: absolute;
+  top: 18px; left: 4%; right: 4%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-hi), var(--line-hi), transparent);
+}
+.method-step { position: relative; }
+.method-num {
+  width: 36px; height: 36px;
+  background: var(--bg-2);
+  border: 1px solid var(--accent);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace;
+  font-size: .8rem;
+  color: var(--accent);
+  font-weight: 600;
+  position: relative; z-index: 2;
+  margin-bottom: 1.5rem;
+}
+.method-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: .6rem;
+}
+.method-desc {
+  font-size: .85rem;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* ── PRICING TRANSPARENCY ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+.price-table {
+  border: 1px solid var(--line);
+}
+.price-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1.1rem 1.3rem;
+  border-bottom: 1px solid var(--line);
+  transition: background .2s;
+}
+.price-row:last-child { border-bottom: none; }
+.price-row:hover { background: var(--bg-2); }
+.price-label { font-size: .9rem; color: var(--text); }
+.price-label small { display:block; color: var(--text-3); font-size: .72rem; margin-top: 2px; font-weight: 300; }
+.price-value {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .9rem;
+  color: var(--accent);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.price-note {
+  font-size: .78rem;
+  color: var(--text-3);
+  line-height: 1.7;
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: var(--bg-2);
+  border-left: 2px solid var(--accent);
+}
+
+/* ── ABOUT/TRUST ── */
+.about-bg { background: var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 3rem;
+}
+.about-stat {
+  background: var(--bg);
+  padding: 2rem 1.5rem;
+}
+.stat-num {
+  font-family:'Manrope', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 200;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+.stat-label {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .68rem;
+  color: var(--text-3);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.cert-list {
+  display: flex; flex-direction: column; gap: .8rem;
+  margin-top: 2rem;
+}
+.cert-item {
+  display: flex; align-items: center; gap: .9rem;
+  font-size: .9rem;
+  color: var(--text-2);
+}
+.cert-check {
+  width: 18px; height: 18px;
+  border: 1px solid var(--accent);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink: 0;
+}
+.cert-check::after {
+  content: '✓';
+  color: var(--accent);
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+/* ── BOOKING ── */
+.book-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+.book-info-block {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.book-info-block:last-child { border-bottom: none; }
+.book-info-label {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .65rem;
+  color: var(--text-3);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+  display:block;
+}
+.book-info-value {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+.book-info-value a { color: var(--accent); text-decoration: none; }
+.book-info-value a:hover { text-decoration: underline; }
+.book-info-value .mono { font-size: .9rem; }
+
+.book-form {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 2.5rem;
+}
+.form-head { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.form-head h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: .4rem; }
+.form-head p { font-size: .85rem; color: var(--text-2); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-row.full { grid-template-columns: 1fr; }
+.form-group { display: flex; flex-direction: column; }
+.form-label {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .62rem;
+  color: var(--text-3);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.form-input, .form-select, .form-textarea {
+  font-family:'Manrope', sans-serif;
+  font-size: .9rem;
+  font-weight: 400;
+  padding: .85rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s, background .2s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--accent);
+  background: var(--bg-3);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-3); }
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239aa3ad' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+.form-textarea { resize: vertical; min-height: 90px; }
+.form-submit {
+  width: 100%;
+  padding: 1.05rem;
+  font-family:'Manrope', sans-serif;
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  cursor: pointer;
+  transition: all .25s;
+  margin-top: 1rem;
+}
+.form-submit:hover { background: var(--accent-2); transform: translateY(-1px); }
+.form-privacy {
+  font-size: .72rem;
+  color: var(--text-3);
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+.form-privacy a { color: var(--text-2); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 4rem 2.5rem 2.5rem;
+  border-top: 1px solid var(--line);
+  background: var(--bg-2);
+  position: relative; z-index:1;
+}
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--line);
+}
+.footer-col h4 {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .65rem;
+  color: var(--text-3);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.footer-col a, .footer-col p {
+  display: block;
+  font-size: .85rem;
+  color: var(--text-2);
+  text-decoration: none;
+  margin-bottom: .6rem;
+  line-height: 1.6;
+  transition: color .2s;
+}
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 2rem;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy {
+  font-family:'JetBrains Mono', monospace;
+  font-size: .68rem;
+  color: var(--text-3);
+  letter-spacing: .1em;
+}
+
+/* Reveal */
+.reveal { opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform: none; }
+
+@media (max-width: 980px) {
+  nav { padding: .9rem 1.2rem; }
+  .nav-links { display: none; }
+  .hero { padding: 7rem 1.2rem 3rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .services-grid, .method-grid { grid-template-columns: 1fr; }
+  .method-grid::before { display: none; }
+  .pricing-grid, .about-grid, .book-grid, .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  section { padding: 4.5rem 1.2rem; }
+  .trust-inner { grid-template-columns: 1fr; gap: 1rem; }
+  .trust-brands { gap: 1.5rem; font-size: .9rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .book-form { padding: 1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="brand">
+    <div class="brand-mark"></div>
+    <div>
+      <div class="brand-name">VOLT<span class="accent">WERK</span></div>
+      <div class="brand-tag">EV · HYBRID · DIAGNOSE</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#methode">Methode</a></li>
+      <li><a href="#preise">Preise</a></li>
+      <li><a href="#ueber">Über uns</a></li>
+    </ul>
+    <a href="tel:+490000000000" class="nav-phone mono">+49 ··· ······</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-status reveal">
+        <span class="status-dot"></span>
+        <span>SYSTEM ONLINE · WERKSTATT VERFÜGBAR</span>
+      </div>
+      <h1 class="hero-title reveal">
+        Spezialwerkstatt<br>
+        für <strong>Elektro- &<br>Hybridfahrzeuge.</strong>
+      </h1>
+      <p class="hero-sub reveal">
+        Unabhängig. Hochvolt-zertifiziert. Transparent. Wir kümmern uns um Ihren EV mit der Sorgfalt, die er verdient — ohne die Wartezeiten und Preise einer Vertragswerkstatt.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#termin" class="btn btn-primary">
+          Termin anfragen <span class="btn-arrow">→</span>
+        </a>
+        <a href="#leistungen" class="btn btn-ghost">
+          Leistungen ansehen
+        </a>
+      </div>
+    </div>
+
+    <!-- Diagnostic panel -->
+    <div class="hv-panel reveal">
+      <div class="hv-header">
+        <span class="hv-title">HV-DIAGNOSTIK</span>
+        <span class="hv-id">SYS_ID · VW.0817</span>
+      </div>
+      <div class="hv-row"><span class="hv-label">Hochvoltbatterie</span><span class="hv-value good">87.4% SOH</span></div>
+      <div class="hv-row"><span class="hv-label">Zellspannung max/min</span><span class="hv-value">4.12 / 4.09 V</span></div>
+      <div class="hv-row"><span class="hv-label">Isolationswiderstand</span><span class="hv-value good">> 100 MΩ</span></div>
+      <div class="hv-row"><span class="hv-label">Inverter Temp</span><span class="hv-value">42 °C</span></div>
+      <div class="hv-row"><span class="hv-label">Fehlercodes</span><span class="hv-value good">0</span></div>
+      <div class="hv-bar"><div class="hv-bar-fill"></div></div>
+      <div class="hv-foot">
+        <span>BATTERY HEALTH</span>
+        <span>SCAN COMPLETE · 04:32</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="trust-inner">
+    <span class="trust-label">// Wir betreuen</span>
+    <div class="trust-brands">
+      <span>TESLA</span>
+      <span>ID.</span>
+      <span>e-tron</span>
+      <span>EQ</span>
+      <span>POLESTAR</span>
+      <span>iX</span>
+      <span>Ioniq</span>
+      <span>+12</span>
+    </div>
+  </div>
+</div>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-tag">Leistungen / Services</span>
+      <h2 class="section-title">Was wir <strong>besser machen</strong> als die Konkurrenz.</h2>
+      <p class="section-lead">Wir konzentrieren uns ausschließlich auf elektrifizierte Fahrzeuge. Das bedeutet: bessere Diagnose, kürzere Standzeiten, faire Preise.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service reveal">
+        <div class="service-num">01 / HV</div>
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <h3 class="service-title">Hochvolt-Diagnose</h3>
+        <p class="service-desc">Vollständige Auslese von HV-System, BMS und Zellbalance. Wir finden Fehler, die Universalwerkstätten übersehen.</p>
+        <div class="service-meta">
+          <span>≈ 60 min</span>
+          <span class="price">ab 89 €</span>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-num">02 / SOH</div>
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="18" height="10" rx="1"/><path d="M22 11v2"/><path d="M6 12h2M11 12h2"/></svg>
+        <h3 class="service-title">Batterie-Zustandsbericht</h3>
+        <p class="service-desc">SOH-Analyse mit zertifiziertem Protokoll — entscheidend bei Gebrauchtwagenkauf, Garantie oder Verkauf.</p>
+        <div class="service-meta">
+          <span>≈ 90 min</span>
+          <span class="price">ab 149 €</span>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-num">03 / SVC</div>
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <h3 class="service-title">Inspektion & Wartung</h3>
+        <p class="service-desc">Herstellervorgabe-konforme Inspektion. Garantieerhaltend — auch bei Leasing- und Firmenwagen.</p>
+        <div class="service-meta">
+          <span>nach Plan</span>
+          <span class="price">Festpreis</span>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-num">04 / TYR</div>
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        <h3 class="service-title">Reifen & Fahrwerk</h3>
+        <p class="service-desc">EV-spezifische Reifen mit niedrigem Rollwiderstand. Achsvermessung mit Tesla-/MEB-Toleranzen.</p>
+        <div class="service-meta">
+          <span>same-day</span>
+          <span class="price">ab 49 €</span>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-num">05 / TÜV</div>
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <h3 class="service-title">HU/AU für E-Fahrzeuge</h3>
+        <p class="service-desc">Hauptuntersuchung mit HV-Sicherheitsprüfung. Termin innerhalb einer Woche, Vorbereitung inklusive.</p>
+        <div class="service-meta">
+          <span>≈ 75 min</span>
+          <span class="price">ab 139 €</span>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-num">06 / SW</div>
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <h3 class="service-title">Software & Updates</h3>
+        <p class="service-desc">OEM-Diagnosezugang, Steuergeräte-Codierung, Update-Management. Auch nach Reparaturen.</p>
+        <div class="service-meta">
+          <span>nach Aufwand</span>
+          <span class="price">ab 75 €/h</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODE -->
+<section id="methode" class="method-bg">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-tag">Methode / Process</span>
+      <h2 class="section-title">So <strong>arbeiten wir</strong>.</h2>
+      <p class="section-lead">Vier Schritte. Keine Überraschungen. Keine versteckten Kosten. Sie wissen vor jedem Werkzeug-Einsatz, was es kostet.</p>
+    </div>
+
+    <div class="method-grid">
+      <div class="method-step reveal">
+        <div class="method-num">01</div>
+        <h4 class="method-title">Annahme & Diagnose</h4>
+        <p class="method-desc">Persönliches Gespräch, vollständige Auslese aller Systeme, dokumentierter Befund.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-num">02</div>
+        <h4 class="method-title">Festpreis-Angebot</h4>
+        <p class="method-desc">Schriftlicher Kostenvoranschlag vor jeder Reparatur. Nichts wird ohne Ihre Freigabe gemacht.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-num">03</div>
+        <h4 class="method-title">Reparatur & Foto-Doku</h4>
+        <p class="method-desc">Fotos vor/nach jeder Maßnahme. Sie sehen, was gemacht wurde — auch wenn Sie nicht da waren.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-num">04</div>
+        <h4 class="method-title">Übergabe & Garantie</h4>
+        <p class="method-desc">Detaillierte Rechnung, Probefahrt-Protokoll, 24 Monate Gewährleistung auf Arbeit & Teile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREISE / TRANSPARENCY -->
+<section id="preise">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-tag">Preise / Pricing</span>
+      <h2 class="section-title">Transparenz statt <strong>Überraschungen</strong>.</h2>
+      <p class="section-lead">Stundensätze und Pauschalen veröffentlicht — etwas, was 90% der Werkstätten vermeiden. Bei uns wissen Sie, woran Sie sind, bevor Sie buchen.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="reveal">
+        <h3 style="font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--text-3); letter-spacing:.18em; text-transform:uppercase; margin-bottom:1rem;">// Stundensätze</h3>
+        <div class="price-table">
+          <div class="price-row">
+            <div class="price-label">Mechanische Arbeiten<small>Bremsen, Fahrwerk, Reifen</small></div>
+            <div class="price-value">95,00 €/h</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">HV-Arbeiten<small>Zertifizierter HV-Techniker</small></div>
+            <div class="price-value">125,00 €/h</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Diagnose & Software<small>OEM-Tools, Codierung</small></div>
+            <div class="price-value">75,00 €/h</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Karosseriearbeiten<small>auf Anfrage, Kooperationspartner</small></div>
+            <div class="price-value">individuell</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <h3 style="font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--text-3); letter-spacing:.18em; text-transform:uppercase; margin-bottom:1rem;">// Pauschalen</h3>
+        <div class="price-table">
+          <div class="price-row">
+            <div class="price-label">HV-Schnelldiagnose<small>Auslese + schriftlicher Befund</small></div>
+            <div class="price-value">89,00 €</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">SOH-Zertifikat<small>Batteriegutachten, gerichtsfest</small></div>
+            <div class="price-value">149,00 €</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Reifenwechsel<small>Räder, Wuchten, Drehmoment</small></div>
+            <div class="price-value">49,00 €</div>
+          </div>
+          <div class="price-row">
+            <div class="price-label">Kaufberatung Gebrauchtwagen<small>Vor-Ort oder bei Händler</small></div>
+            <div class="price-value">219,00 €</div>
+          </div>
+        </div>
+        <p class="price-note">
+          Alle Preise inkl. 19% MwSt. Materialkosten separat nach Aufwand. Kostenvoranschlag immer kostenlos.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER -->
+<section id="ueber" class="about-bg">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="section-tag">Über uns / About</span>
+        <h2 class="section-title">Eine Werkstatt, die <strong>versteht, was sie tut</strong>.</h2>
+        <p class="section-lead">Wir sind aus einem Grund entstanden: weil viele Werkstätten Elektroautos behandeln wie Verbrenner mit anderen Kabeln. Das ist gefährlich — für Sie, für das Auto, für den Geldbeutel.</p>
+        <p style="font-size:.95rem; color:var(--text-2); line-height:1.8; margin-top:1.5rem;">
+          Bei VOLTWERK arbeiten ausschließlich Techniker mit gültiger Hochvolt-Qualifikation nach DGUV 209-093. Wir investieren jedes Jahr fünfstellig in Schulungen, Spezialwerkzeug und Diagnosegeräte — weil ein Tesla-Inverter sich nicht öffnen lässt wie ein Dieselmotor.
+        </p>
+
+        <div class="cert-list">
+          <div class="cert-item"><div class="cert-check"></div>HV-Stufe 3S — Arbeiten an aktiven Hochvoltsystemen</div>
+          <div class="cert-item"><div class="cert-check"></div>Tesla-, VW-MEB-, Stellantis-Diagnosezugang</div>
+          <div class="cert-item"><div class="cert-check"></div>ZDK-Innungsbetrieb · Garantieerhaltend für Leasingfahrzeuge</div>
+          <div class="cert-item"><div class="cert-check"></div>Geprüfte Werkstatt nach §29 StVZO (HU/AU)</div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">EV / Hybrid-Fokus</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-num">24</div>
+            <div class="stat-label">Monate Garantie</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-num">< 5d</div>
+            <div class="stat-label">Ø Wartezeit</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-num">−40%</div>
+            <div class="stat-label">vs. Vertragswerkstatt</div>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem; font-size:.75rem; color:var(--text-3); line-height:1.7;">
+          // Durchschnittswerte 2025. Vergleich Stundensatz Vertragswerkstatt EV-Inspektion (Quelle: ADAC Werkstattvergleich).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMIN -->
+<section id="termin">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-tag">Termin / Booking</span>
+      <h2 class="section-title">Termin <strong>anfragen</strong>.</h2>
+      <p class="section-lead">Antwort innerhalb von 24h werktags. Bei Bedarf schicken wir vorab einen Kostenrahmen — damit Sie nicht erst beim Abholen die Rechnung sehen.</p>
+    </div>
+
+    <div class="book-grid">
+      <div class="reveal">
+        <div class="book-info-block">
+          <span class="book-info-label">// Standort</span>
+          <div class="book-info-value">
+            Musterstraße 1<br>
+            77XXX Ortenau<br>
+            <span class="mono" style="color:var(--text-3); font-size:.78rem;">48.4753° N · 7.9453° E</span>
+          </div>
+        </div>
+        <div class="book-info-block">
+          <span class="book-info-label">// Direkt</span>
+          <div class="book-info-value">
+            <a href="tel:+490000000000" class="mono">+49 ··· ······</a><br>
+            <a href="mailto:termin@voltwerk.de">termin@voltwerk.de</a>
+          </div>
+        </div>
+        <div class="book-info-block">
+          <span class="book-info-label">// Öffnungszeiten</span>
+          <div class="book-info-value mono" style="font-size:.85rem; line-height:2;">
+            MO – FR &nbsp;&nbsp; 08:00 – 18:00<br>
+            SA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 09:00 – 13:00<br>
+            SO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--text-3);">geschlossen</span>
+          </div>
+        </div>
+        <div class="book-info-block">
+          <span class="book-info-label">// Notfall</span>
+          <div class="book-info-value" style="font-size:.9rem;">
+            HV-Sicherheitsproblem? Fahren Sie nicht weiter. Rufen Sie uns sofort an — wir koordinieren Abschleppdienst.
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form class="book-form" id="bookForm" novalidate>
+          <div class="form-head">
+            <h3>Werkstatt-Termin</h3>
+            <p>Antwort innerhalb von 24 Stunden werktags</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="vname">Vorname *</label>
+              <input class="form-input" type="text" id="vname" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="nname">Nachname *</label>
+              <input class="form-input" type="text" id="nname" required/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="email">E-Mail *</label>
+              <input class="form-input" type="email" id="email" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tel">Telefon *</label>
+              <input class="form-input" type="tel" id="tel" required/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="model">Fahrzeug Modell *</label>
+              <input class="form-input" type="text" id="model" placeholder="z.B. Tesla Model 3 LR 2022" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="km">Laufleistung (km)</label>
+              <input class="form-input" type="text" id="km" placeholder="45.000"/>
+            </div>
+          </div>
+
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="form-label" for="anliegen">Anliegen *</label>
+              <select class="form-select" id="anliegen" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option>HV-Diagnose / Fehlersuche</option>
+                <option>Batterie-Zustandsbericht (SOH)</option>
+                <option>Inspektion / Wartung</option>
+                <option>Reifen / Fahrwerk</option>
+                <option>HU/AU (TÜV)</option>
+                <option>Software / Codierung</option>
+                <option>Kaufberatung Gebrauchtwagen</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="form-label" for="notiz">Beschreibung</label>
+              <textarea class="form-textarea" id="notiz" placeholder="Fehlercodes, Symptome, Wunschtermin …"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="form-submit">Termin anfragen →</button>
+          <p class="form-privacy">
+            Mit dem Absenden akzeptieren Sie unsere <a href="#">Datenschutzerklärung</a>. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="#" class="brand" style="margin-bottom:1.2rem;">
+          <div class="brand-mark"></div>
+          <div>
+            <div class="brand-name">VOLT<span class="accent">WERK</span></div>
+            <div class="brand-tag">EV · HYBRID · DIAGNOSE</div>
+          </div>
+        </a>
+        <p style="font-size:.85rem; color:var(--text-3); line-height:1.7; max-width:280px;">
+          Unabhängige Spezialwerkstatt für elektrifizierte Fahrzeuge in der Ortenau. HV-zertifiziert, transparent, fair.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <a href="#leistungen">HV-Diagnose</a>
+        <a href="#leistungen">Batterie-SOH</a>
+        <a href="#leistungen">Inspektion</a>
+        <a href="#leistungen">HU/AU</a>
+      </div>
+      <div class="footer-col">
+        <h4>Werkstatt</h4>
+        <a href="#methode">Methode</a>
+        <a href="#preise">Preise</a>
+        <a href="#ueber">Über uns</a>
+        <a href="#termin">Termin</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <p class="mono">+49 ··· ······</p>
+        <a href="mailto:termin@voltwerk.de">termin@voltwerk.de</a>
+        <p>Musterstraße 1<br>77XXX Ortenau</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 VOLTWERK GmbH · Alle Rechte vorbehalten</span>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="#" style="font-size:.7rem; color:var(--text-3); text-decoration:none; letter-spacing:.1em; text-transform:uppercase;">Impressum</a>
+        <a href="#" style="font-size:.7rem; color:var(--text-3); text-decoration:none; letter-spacing:.1em; text-transform:uppercase;">Datenschutz</a>
+        <a href="#" style="font-size:.7rem; color:var(--text-3); text-decoration:none; letter-spacing:.1em; text-transform:uppercase;">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.getElementById('bookForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const required = this.querySelectorAll('[required]');
+  let valid = true;
+  required.forEach(field => {
+    if (!field.value.trim()) {
+      field.style.borderColor = '#ff6b35';
+      valid = false;
+    } else {
+      field.style.borderColor = '';
+    }
+  });
+  if (valid) {
+    alert('Demo: Anfrage würde versendet werden.');
+  }
+});
+</script>
+</body>
+</html>

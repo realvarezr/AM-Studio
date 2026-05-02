@@ -1960,3 +1960,89 @@ body.cookie-visible .wa-fab { bottom: 108px; }
   .pm-right { display: none; }
   .pm-left { padding: 60px 24px 40px; }
 }
+
+/* TEXT SCALE +30% */
+.nav-logo-am { font-size: 34px; }
+.nav-logo-studio { font-size: 12px; }
+.nav-links a { font-size: 16px; }
+.lang-btn { font-size: 13px; }
+.nav-cta { font-size: 14px; }
+.mobile-menu a { font-size: 42px; }
+
+.hero-label { font-size: 13px; }
+.hero-h1,
+.hero-h2 { font-size: clamp(68px, 10.4vw, 143px); }
+.hero-sub { font-size: clamp(20px, 1.95vw, 23px); }
+.btn-primary,
+.btn-ghost,
+.scroll-text,
+.badge { font-size: 16px; }
+
+.section-eyebrow { font-size: 13px; }
+.section-title { font-size: clamp(52px, 6.5vw, 88px); }
+.section-intro { font-size: 21px; }
+
+.service-num { font-size: 83px; }
+.service-title { font-size: 26px; }
+.service-desc { font-size: 18px; }
+.service-list li { font-size: 17px; }
+.service-link { font-size: 14px; }
+
+.werk-num { font-size: clamp(68px, 6.5vw, 94px); }
+.werk-meta,
+.werk-tag,
+.concept-label,
+.form-label,
+.contact-item-label,
+.cookie-kicker,
+.pm-tag,
+.pm-client,
+.pm-brief-label,
+.pm-meta-label,
+.pm-visit-link { font-size: 13px; }
+.werk-title { font-size: clamp(29px, 3.12vw, 42px); }
+.werk-desc,
+.concept-desc,
+.concept-card-body p,
+.concept-list li,
+.about-text,
+.about-note,
+.form-input,
+.form-select,
+.form-textarea,
+.contact-item-value,
+.form-success p,
+.cookie-copy p,
+.pm-desc,
+.pm-meta-value,
+.pm-brief-quote { font-size: 18px; }
+
+.concept-card-title { font-size: clamp(39px, 3.9vw, 57px); }
+.stat-number { font-size: 62px; }
+.stat-label,
+.wa-text-primary { font-size: 21px; }
+.wa-text-sub { font-size: 16px; }
+.form-submit,
+.cookie-btn,
+.cookie-link { font-size: 13px; }
+.form-success h3,
+.cookie-copy h2 { font-size: 42px; }
+.pm-title { font-size: clamp(36px, 4.55vw, 62px); }
+.pm-stat-num { font-size: 52px; }
+.pm-stat-label { font-size: 14px; }
+
+@media (max-width: 600px) {
+  .hero-h1,
+  .hero-h2 { font-size: clamp(58px, 14vw, 78px); }
+  .section-title { font-size: clamp(42px, 12vw, 62px); }
+  .hero-sub,
+  .section-intro,
+  .service-desc,
+  .werk-desc,
+  .concept-desc,
+  .about-text,
+  .form-input,
+  .form-select,
+  .form-textarea,
+  .contact-item-value { font-size: 18px; }
+}

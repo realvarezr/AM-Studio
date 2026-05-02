@@ -36,3 +36,40 @@ document.querySelectorAll('.filter-pill').forEach(btn => {
     }
   });
 });
+
+/* ── FORM ───────────────────────────────── */
+function submitForm() {
+  const name    = document.getElementById('fname').value.trim();
+  const email   = document.getElementById('femail').value.trim();
+  const message = document.getElementById('fmessage').value.trim();
+  if (!name || !email || !message) {
+    alert('Bitte füllt alle Pflichtfelder aus.');
+    return;
+  }
+  const phone   = document.getElementById('fphone')?.value.trim() || '';
+  const service = document.getElementById('fservice')?.value || '';
+
+  const btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Wird gesendet…';
+
+  const body = new URLSearchParams({ nombre: name, email, telefono: phone, servicio: service, mensaje: message });
+
+  fetch('enviar-contacto.php', { method: 'POST', body })
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok) {
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+      } else {
+        alert(data.error || 'Fehler beim Senden.');
+        btn.disabled = false;
+        btn.textContent = 'Nachricht senden →';
+      }
+    })
+    .catch(() => {
+      alert('Verbindungsfehler. Bitte versuche es später erneut.');
+      btn.disabled = false;
+      btn.textContent = 'Nachricht senden →';
+    });
+}
